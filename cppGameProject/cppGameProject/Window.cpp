@@ -45,7 +45,7 @@ Window:: ~Window()
 void Window::render(Image& image)
 {
 	//Apply the image
-	SDL_BlitSurface(gHelloWorld, nullptr, gScreenSurface, nullptr);
+	SDL_BlitSurface(image.getResource(), nullptr, gScreenSurface, nullptr);
 	//Update the surface
 	SDL_UpdateWindowSurface(gWindow);
 }

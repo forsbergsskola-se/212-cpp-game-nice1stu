@@ -6,14 +6,13 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include "../cppGameProject/Window.h"
 #include "../cppGameProject/Image.h"
-#include "../02_getting_an_image_on_the_screen/02_getting_an_image_on_the_screen.cpp"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
 //Frees media and shuts down SDL
-void close();
+//void close();
 
 int main(int argc, char* args[])
 {
@@ -27,19 +26,25 @@ int main(int argc, char* args[])
 		}
 	
 	//Load media
-	Image image{};
+	Image image{"img/hello_world.bmp"};
 		if (!image.wasSuccessful())
 		{
 			printf("Failed to load media!\n");
 			return -1;
 		}
 
-		
-
-		
+		window.render(image);
 
 		//Hack to get window to stay up
-		SDL_Event e; bool quit = false; while (quit == false) { while (SDL_PollEvent(&e)) { if (e.type == SDL_QUIT) quit = true; } }
+		SDL_Event e;
+		bool quit = false;
+		while (quit == false)
+		{ 
+			while (SDL_PollEvent(&e))
+			{ 
+				if (e.type == SDL_QUIT)	quit = true;
+			}
+		}
 
 	return 0;
 }

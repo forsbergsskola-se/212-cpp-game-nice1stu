@@ -1,15 +1,17 @@
 #pragma once
+#include <SDL.h>
+
 class Image
 {
 	//The image we will load and show on the screen
 	SDL_Surface* gHelloWorld = nullptr;
-	bool loadMedia();
+	bool loadMedia(const char* path);
 	bool success;
 
 public:
-	Image()
+	Image(const char* path)
 	{
-		success = loadMedia();
+		success = loadMedia(path);
 	}
 	~Image();
 	bool wasSuccessful() { return success; }
