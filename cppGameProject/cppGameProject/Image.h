@@ -13,5 +13,6 @@ public:
 	}
 	~Image();
 	bool wasSuccessful() { return success; }
+	SDL_Surface* getResource() { return gHelloWorld; }
 };
 

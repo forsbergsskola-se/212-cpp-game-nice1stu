@@ -1,4 +1,5 @@
 #pragma once
+#include "Image.h"
 class Window
 {
 	//The window we'll be rendering to
@@ -18,5 +19,6 @@ public:
 	}
 	~Window();
 	bool wasSuccessful() { return success; }
+	void render(Image& image);
 };
 

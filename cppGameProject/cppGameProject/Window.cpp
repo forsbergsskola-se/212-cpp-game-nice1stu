@@ -41,3 +41,11 @@ Window:: ~Window()
 	//Quit SDL subsystems
 	SDL_Quit();
 }
+
+void Window::render(Image& image)
+{
+	//Apply the image
+	SDL_BlitSurface(gHelloWorld, nullptr, gScreenSurface, nullptr);
+	//Update the surface
+	SDL_UpdateWindowSurface(gWindow);
+}
