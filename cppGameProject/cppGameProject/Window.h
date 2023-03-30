@@ -7,7 +7,6 @@ class Window
 
 	//The surface contained by the window
 	SDL_Surface* screenSurface{};
-
 	//Whether window startup was successful
 	bool success;
 
@@ -15,6 +14,6 @@ public:
 	Window(int width, int height);
 	~Window();
 	bool wasSuccessful() { return success; }
-	void render(Image& image);
+	void render(Image* image);
 };
 
