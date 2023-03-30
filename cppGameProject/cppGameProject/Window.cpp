@@ -2,34 +2,26 @@
 #include <cstdio>
 #include <SDL.h>
 
-bool Window::init(int width, int height)
+Window::Window(int width, int height) : success{}
 {
-	//Initialization flag
-	bool success = true;
 
 	//Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-		success = false;
+		return;
 	}
-	else
-	{
 		//Create window
 		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 		if (gWindow == nullptr)
 		{
 			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-			success = false;
+			return;
 		}
-		else
-		{
-			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface(gWindow);
-		}
-	}
 
-	return success;
+		//Get window surface
+		gScreenSurface = SDL_GetWindowSurface(gWindow);
+		success = true;
 }
 
 Window:: ~Window()

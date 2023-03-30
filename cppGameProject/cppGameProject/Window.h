@@ -11,12 +11,8 @@ class Window
 	//Whether window startup was successful
 	bool success;
 
-	bool init(int width, int height);
 public:
 	Window(int width, int height)
-	{
-		success = init(width, height);
-	}
 	~Window();
 	bool wasSuccessful() { return success; }
 	void render(Image& image);
