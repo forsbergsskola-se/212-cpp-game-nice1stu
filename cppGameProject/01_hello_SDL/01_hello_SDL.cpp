@@ -33,7 +33,7 @@ int main(int argc, char* args[])
 			return -1;
 		}
 
-		window.render(image);
+
 
 		//Hack to get window to stay up
 		SDL_Event e;
@@ -44,6 +44,7 @@ int main(int argc, char* args[])
 			{ 
 				if (e.type == SDL_QUIT)	quit = true;
 			}
+			window.render(image);
 		}
 
 	return 0;

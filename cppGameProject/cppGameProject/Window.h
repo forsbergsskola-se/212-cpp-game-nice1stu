@@ -3,10 +3,10 @@
 class Window
 {
 	//The window we'll be rendering to
-	SDL_Window* gWindow = nullptr;
+	SDL_Window* window{};
 
 	//The surface contained by the window
-	SDL_Surface* gScreenSurface = nullptr;
+	SDL_Surface* screenSurface{};
 
 	//Whether window startup was successful
 	bool success;

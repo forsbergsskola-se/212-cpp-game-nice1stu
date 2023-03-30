@@ -12,23 +12,23 @@ Window::Window(int width, int height) : success{}
 		return;
 	}
 		//Create window
-		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
-		if (gWindow == nullptr)
+		window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+		if (window == nullptr)
 		{
 			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 			return;
 		}
 
 		//Get window surface
-		gScreenSurface = SDL_GetWindowSurface(gWindow);
+		screenSurface = SDL_GetWindowSurface(window);
 		success = true;
 }
 
 Window:: ~Window()
 {
 	//Destroy window
-	SDL_DestroyWindow(gWindow);
-	gWindow = nullptr;
+	SDL_DestroyWindow(window);
+	window = nullptr;
 
 	//Quit SDL subsystems
 	SDL_Quit();
@@ -37,7 +37,7 @@ Window:: ~Window()
 void Window::render(Image& image)
 {
 	//Apply the image
-	SDL_BlitSurface(image.getResource(), nullptr, gScreenSurface, nullptr);
+	SDL_BlitSurface(image.getResource(), nullptr, screenSurface, nullptr);
 	//Update the surface
-	SDL_UpdateWindowSurface(gWindow);
+	SDL_UpdateWindowSurface(window);
 }
