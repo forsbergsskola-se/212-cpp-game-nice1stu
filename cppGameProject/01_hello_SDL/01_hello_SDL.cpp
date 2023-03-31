@@ -16,7 +16,7 @@ std::map<SDL_KeyCode, Image> surfaceMap =
 	{SDL_KeyCode::SDLK_RIGHT, Image{"img/right.bmp"}},
 };
 
- const char* fallbackSurface { "img/press.bmp" };
+const char* fallbackSurface { "img/press.bmp" };
 
 int main(int argc, char* args[])
 {

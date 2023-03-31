@@ -17,6 +17,6 @@ Image::Image(const char* path) : success{}
 Image:: ~Image()
 {
 	//Deallocate surface
-	SDL_FreeSurface(imageSurface);
+	//SDL_FreeSurface(imageSurface);
 	imageSurface = nullptr;
 }
