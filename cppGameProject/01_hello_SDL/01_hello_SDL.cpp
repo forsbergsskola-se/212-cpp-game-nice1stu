@@ -1,7 +1,3 @@
-/*This source code copyrighted by Lazy Foo' Productions (2004-2022)
-and may not be redistributed without written permission.*/
-
-//Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
 #include "../cppGameProject/Window.h"
@@ -9,7 +5,6 @@ and may not be redistributed without written permission.*/
 #include <map>
 #include <memory>
 
-//Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
@@ -26,14 +21,12 @@ std::map<SDL_KeyCode, Image> surfaceMap =
 int main(int argc, char* args[])
 {
 	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT };
-	//Start up SDL and create window
 	if (!window.wasSuccessful())
 		{
 			printf("Failed to initialize!\n");
 			return -1;
 		}
 	
-	//Load media
 	auto image = std::make_unique<Image>(fallbackSurface);
 		if (!image->wasSuccessful())
 		{
@@ -41,7 +34,6 @@ int main(int argc, char* args[])
 			return -1;
 		}
 
-	//Hack to get window to stay up
 	SDL_Event e; bool quit = false;
 	while (quit == false)
 	{
