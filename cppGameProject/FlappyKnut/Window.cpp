@@ -35,9 +35,8 @@ Window::~Window() {
 }
 
 void Window::render(Image& image) {
-	SDL_Rect rect{ 100, 100, 5, 5 };
 	//Apply image
-	SDL_BlitSurface(image.getResource(), nullptr, gScreenSurface, &rect);
+	SDL_BlitSurface(image.getResource(), nullptr, gScreenSurface, nullptr);
 	//Update the surface
 	SDL_UpdateWindowSurface(gWindow);
 }
