@@ -5,8 +5,8 @@
 Image::Image(const char* path) : success{} {
 
 	//Load splash image
-	gHelloWorld = SDL_LoadBMP(path);
-	if (!gHelloWorld)
+	imageSurface = SDL_LoadBMP(path);
+	if (!imageSurface)
 	{
 		printf("Unable to load image %s! SDL Error: %s\n", path, SDL_GetError());
 		return;
@@ -17,6 +17,6 @@ Image::Image(const char* path) : success{} {
 
 Image::~Image() {
 	//Dealloacate surface
-	SDL_FreeSurface(gHelloWorld);
-	gHelloWorld = nullptr;
+	SDL_FreeSurface(imageSurface);
+	imageSurface = nullptr;
 }
