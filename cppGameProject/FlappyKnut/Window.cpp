@@ -34,9 +34,9 @@ Window::~Window() {
 	SDL_Quit();
 }
 
-void Window::render(Image& image) {
+void Window::render(Image* image) {
 	//Apply image
-	SDL_BlitSurface(image.getResource(), nullptr, screenSurface, nullptr);
+	SDL_BlitSurface(image->getResource(), nullptr, screenSurface, nullptr);
 	//Update the surface
 	SDL_UpdateWindowSurface(window);
 }

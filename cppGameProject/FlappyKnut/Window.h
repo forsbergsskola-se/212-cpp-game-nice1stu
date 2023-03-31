@@ -13,6 +13,6 @@ public:
 	Window(int width, int height);
 	~Window();
 	bool wasSuccessful() { return success; }
-	void render(Image& image);
+	void render(Image* image);
 };
 
