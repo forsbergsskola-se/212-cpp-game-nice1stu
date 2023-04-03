@@ -1,43 +1,19 @@
-#include "Window.h"
-#include <cstdio>
+#pragma once
 #include <SDL.h>
 
-Window::Window(int width, int height) : success{}
+class Window
 {
+	// The window we'll be rendering to
+	SDL_Window* window{};
 
-	//Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-		return;
-	}
-		//Create window
-		window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
-		if (window == nullptr)
-		{
-			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-			return;
-		}
+	// The surface contained by the window
+	SDL_Surface* screenSurface{};
 
-		//Get window surface
-		screenSurface = SDL_GetWindowSurface(window);
-		success = true;
-}
+public:
+	Window(int width, int height);
+	~Window();
 
-Window:: ~Window()
-{
-	//Destroy window
-	SDL_DestroyWindow(window);
-	window = nullptr;
+	bool wasSuccessful() { return window != nullptr && screenSurface != nullptr; }
 
-	//Quit SDL subsystems
-	SDL_Quit();
-}
-
-void Window::render(Image* image)
-{
-	//Apply the image
-	SDL_BlitSurface(image->getResource(), nullptr, screenSurface, nullptr);
-	//Update the surface
-	SDL_UpdateWindowSurface(window);
-}
+	void render(SDL_Surface* imageSurface);
+};

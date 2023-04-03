@@ -20,58 +20,54 @@ const char* fallbackSurface { "img/SpaceshipToilet.bmp" };
 
 int main(int argc, char* args[])
 {
+	const char* fallbackSurface{ "img/SpaceshipToilet.bmp" };
+	auto image = std::make_unique<Image>(fallbackSurface);
+	if (!image->wasSuccessful())
+	{
+		printf("Failed to load fallback image!\n");
+		return -1;
+	}
+
 	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT };
 	if (!window.wasSuccessful())
-		{
-			printf("Failed to initialize!\n");
-			return -1;
-		}
-	
-	auto image = std::make_unique<Image>(fallbackSurface);
-		if (!image->wasSuccessful())
-		{
-			printf("Failed to load media!\n");
-			return -1;
-		}
+	{
+		printf("Failed to initialize window!\n");
+		return -1;
+	}
 
 	SDL_Event e; bool quit = false;
-	while (quit == false)
+	while (!quit)
 	{
 		while (SDL_PollEvent(&e))
-		{ 
+		{
 			switch (e.type)
 			{
-				case SDL_QUIT:
-				{
-					quit = true;
-				} break;
+			case SDL_QUIT:
+				quit = true;
+				break;
 
-				case SDL_KEYDOWN:
+			case SDL_KEYDOWN:
+				if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end())
 				{
-					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end())
+					auto value = *result;
+					auto imageName = value.second;
+					image = std::make_unique<Image>(imageName);
+					if (!image->wasSuccessful())
 					{
-						auto value = *result;
-						auto imageName = value.second;
-						image = std::make_unique<Image>(imageName);
-						if (!image->wasSuccessful())
-						{
-							printf("Failed to load media!\n");
-							return -1;
-						}
-					}
-					else
-					{
+						printf("Failed to load image %s!\n", imageName);
 						image = std::make_unique<Image>(fallbackSurface);
-							if (!image->wasSuccessful())
-							{
-								printf("Failed to load media!\n");
-								return -1;
-							}
 					}
-				}break;
+				}
+				else
+				{
+					image = std::make_unique<Image>(fallbackSurface);
+				}
+				break;
 			}
 		}
-		window.render(image.get());
+
+		window.render(image->getResource());
 	}
+
 	return 0;
 }
