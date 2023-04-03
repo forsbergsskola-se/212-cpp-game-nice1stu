@@ -169,12 +169,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\01_hello_SDL\MainGame.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="ImageCommands.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Command.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="ImageCommands.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
