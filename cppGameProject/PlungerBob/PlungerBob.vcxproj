@@ -148,13 +148,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Framework\InputHandler.cpp" />
+    <ClCompile Include="Framework\Vector2D.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Framework\InputHandler.h" />
+    <ClInclude Include="Framework\Singleton.h" />
+    <ClInclude Include="Framework\Vector2D.h" />
     <ClInclude Include="Game\Game.h" />
-    <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

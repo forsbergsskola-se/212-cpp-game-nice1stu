@@ -1,5 +1,7 @@
 #include "Game.h"
 
+#include "../Framework/InputHandler.h"
+
 CGame::CGame()
 {
 }
@@ -25,14 +27,14 @@ void CGame::Update()
 	// TODO: move the input handling to the player class
 
 	/*
-	if (CInputHandler::GetInstance().KeyHeld(SDL_SCANCODE_LEFT))
+	if (CInputHandler::GetInstance().KeyPressed(SDL_SCANCODE_LEFT))
 	{
-		// MOve the player to the left
+		printf("Key left was pressed\n");
 	}
 
-	else if (CInputHandler::GetInstance().KeyHeld(SDL_SCANCODE_RIGHT))
+	else if (CInputHandler::GetInstance().KeyReleased(SDL_SCANCODE_LEFT))
 	{
-		// MOve the player to the right
+		printf("Key left was released\n");
 	}
 	*/
 }

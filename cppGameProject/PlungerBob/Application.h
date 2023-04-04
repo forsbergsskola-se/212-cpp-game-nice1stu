@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Game.h"
-#include "Singleton.h"
+#include "Framework/Singleton.h"
 
 #include <SDL.h>
 

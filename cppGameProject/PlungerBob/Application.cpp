@@ -1,5 +1,7 @@
 #include "Application.h"
 
+#include "Framework/InputHandler.h"
+
 #include <SDL_image.h>
 #include <iostream>
 
@@ -40,6 +42,8 @@ CApplication::CApplication()
 		return;
 	}
 
+	CInputHandler::Initialize();
+
 	m_pGame = new CGame;
 	if (!m_pGame->Create())
 	{
@@ -53,6 +57,8 @@ CApplication::~CApplication()
 	m_pGame->Destroy();
 	delete m_pGame;
 	m_pGame = nullptr;
+
+	CInputHandler::Deinitialize();
 
 	SDL_DestroyRenderer(m_pRenderer);
 	m_pRenderer = nullptr;
@@ -95,7 +101,7 @@ void CApplication::Update()
 		}
 	}
 
-
+	CInputHandler::GetInstance().Update();
 
 	m_pGame->Update();
 }
