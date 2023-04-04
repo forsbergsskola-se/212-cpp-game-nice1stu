@@ -9,6 +9,7 @@ const int SCREEN_HEIGHT = 720;
 CApplication::CApplication()
 : m_pWindow(nullptr)
 , m_pRenderer(nullptr)
+, m_pGame(nullptr)
 , m_Running(true)
 {
 	//Initialize SDL
@@ -39,12 +40,19 @@ CApplication::CApplication()
 		return;
 	}
 
-	//TODO: create the game instance
+	m_pGame = new CGame;
+	if (!m_pGame->Create())
+	{
+		printf("Error: Failed to create game\n");
+		return;
+	}
 }
 
 CApplication::~CApplication()
 {
-	// TODO: destroty the game instance
+	m_pGame->Destroy();
+	delete m_pGame;
+	m_pGame = nullptr;
 
 	SDL_DestroyRenderer(m_pRenderer);
 	m_pRenderer = nullptr;
@@ -69,10 +77,30 @@ void CApplication::Run()
 
 void CApplication::Update()
 {
-//	Game.Update();
+	SDL_Event Event;
+
+	while (SDL_PollEvent(&Event))
+	{
+		switch (Event.type)
+		{
+			case SDL_QUIT:
+			{
+				m_Running = false;
+
+				break;
+			}
+
+			default:
+				break;
+		}
+	}
+
+
+
+	m_pGame->Update();
 }
 
 void CApplication::Render()
 {
-//	Game.Render();
+	m_pGame->Render();
 }

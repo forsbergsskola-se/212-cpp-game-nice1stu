@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Game/Game.h"
 #include "Singleton.h"
 
 #include <SDL.h>
@@ -23,6 +24,8 @@ private:
 	SDL_Window*		m_pWindow;
 
 	SDL_Renderer*	m_pRenderer;
+
+	CGame*			m_pGame;
 
 	bool			m_Running;
 
