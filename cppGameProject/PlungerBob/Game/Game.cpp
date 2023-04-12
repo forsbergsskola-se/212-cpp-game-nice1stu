@@ -46,6 +46,12 @@ void CGame::Destroy()
 	m_pLevel = nullptr;
 }
 
+void CGame::Update(const float Deltatime)
+{
+	m_pPlayer->HandleInput();
+	m_pPlayer->Update(Deltatime);
+}
+
 void CGame::Render()
 {
 	m_pLevel->Render();

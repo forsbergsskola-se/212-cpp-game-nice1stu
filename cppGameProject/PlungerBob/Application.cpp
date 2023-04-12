@@ -106,7 +106,7 @@ void CApplication::Update()
 
 	m_pTimer->Update();
 
-	//m_pGame->Update((float)m_pTimer->GetDeltaTime());
+	m_pGame->Update((float)m_pTimer->GetDeltaTime());
 }
 
 void CApplication::Render()

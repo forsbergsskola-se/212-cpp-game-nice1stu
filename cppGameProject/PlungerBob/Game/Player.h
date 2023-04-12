@@ -13,6 +13,7 @@ public:
 	void Destroy();
 
 	void HandleInput();
+	void Update(const float Deltatime);
 
 	void Render();
 	void RenderDebug();
