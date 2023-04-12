@@ -14,7 +14,7 @@ CGame::~CGame()
 
 bool CGame::Create()
 {
-	m_pTexture = CTextureFactory::GetInstance().CreateTexture("SpaceshipToilet.bmp");
+	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Room.png");
 	return true;
 }
 
