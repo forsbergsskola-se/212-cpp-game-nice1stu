@@ -14,7 +14,10 @@ CLevel::~CLevel()
 bool CLevel::Create()
 {
 	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Room.png");
-	return false;
+
+
+
+	return true;
 }
 
 void CLevel::Destroy()

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Framework/Texture.h"
+#include "Level.h"
 
 class CGame
 {
@@ -12,10 +12,9 @@ public:
 	bool Create();
 	void Destroy();
 
-	void Update(const float Deltatime);
 	void Render();
 	void RenderDebug();
 
 private:
-
+	CLevel* m_pLevel;
 };
