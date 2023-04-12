@@ -1,0 +1,19 @@
+the goal plunge as many toilets as possible. player can continue as long as there is at least one toilet not overflowing.
+
+
+mechnanics:
+move player with arrow keys, up, down left, right
+randomly pick a not overflowing toilet and every n seconds raise the water level
+
+screen
+game room (toilet)
+player
+
+
+
+$(SolutionDir)ext\SDL2-2.26.4\include
+
+$(SolutionDir)ext\SDL2-2.26.4\lib\x86\
+
+SDL2.lib
+SDL2main.lib

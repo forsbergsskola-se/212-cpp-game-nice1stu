@@ -22,7 +22,7 @@ void CGame::Destroy()
 
 }
 
-void CGame::Update()
+void CGame::Update(const float Deltatime)
 {
 	// TODO: move the input handling to the player class
 
@@ -42,4 +42,8 @@ void CGame::Update()
 void CGame::Render()
 {
 
+}
+
+void CGame::RenderDebug()
+{
 }

@@ -4,7 +4,7 @@
 #include "Vector2D.h"
 
 #include <SDL.h>
-#include <memory>
+#include <memory.h>
 
 #define NUM_KEYBOARD_KEYS (SDL_NUM_SCANCODES)
 #define NUM_MOUSE_BUTTONS (8)

@@ -2,16 +2,16 @@
 
 CInputHandler::CInputHandler(void)
 {
-	#ifdef _DEBUG
-		printf("Info: creating input handler\n");
-	#endif
+#ifdef _DEBUG
+	printf("Info: creating input handler\n");
+#endif
 }
 
 CInputHandler::~CInputHandler(void)
 {
-	#ifdef _DEBUG
-		printf("Info: destroying input handler\n");
-	#endif
+#ifdef _DEBUG
+	printf("Info: destroying input handler\n");
+#endif
 }
 
 void CInputHandler::Update(void)

@@ -79,11 +79,11 @@
     <LibraryPath>$(SolutionDir)ext\SDL2-2.26.4\lib\x86\;$(SolutionDir)ext\SDL_Image\lib\x86\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)ext\SDL2-2.26.4\include;$(SolutionDir)ext\SDL_Image\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\;$(SolutionDir)ext\SDL2-2.26.4\include;$(SolutionDir)ext\SDL_Image\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)ext\SDL2-2.26.4\lib\x86\;$(SolutionDir)ext\SDL_Image\lib\x86\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)ext\SDL2-2.26.4\include;$(SolutionDir)ext\SDL_Image\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\;$(SolutionDir)ext\SDL2-2.26.4\include;$(SolutionDir)ext\SDL_Image\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)ext\SDL2-2.26.4\lib\x86\;$(SolutionDir)ext\SDL_Image\lib\x86\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -149,15 +149,27 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Framework\InputHandler.cpp" />
+    <ClCompile Include="Framework\RenderDevice.cpp" />
+    <ClCompile Include="Framework\Texture.cpp" />
+    <ClCompile Include="Framework\TextureFactory.cpp" />
+    <ClCompile Include="Framework\Timer.cpp" />
     <ClCompile Include="Framework\Vector2D.cpp" />
+    <ClCompile Include="Framework\Window.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Framework\InputHandler.h" />
+    <ClInclude Include="Framework\MathUtilities.h" />
+    <ClInclude Include="Framework\RenderDevice.h" />
     <ClInclude Include="Framework\Singleton.h" />
+    <ClInclude Include="Framework\StringUtilities.h" />
+    <ClInclude Include="Framework\Texture.h" />
+    <ClInclude Include="Framework\TextureFactory.h" />
+    <ClInclude Include="Framework\Timer.h" />
     <ClInclude Include="Framework\Vector2D.h" />
+    <ClInclude Include="Framework\Window.h" />
     <ClInclude Include="Game\Game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

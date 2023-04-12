@@ -1,32 +1,37 @@
 #pragma once
 
 #include "Game/Game.h"
-#include "Framework/Singleton.h"
 
-#include <SDL.h>
+#include "Framework/Singleton.h"
+#include "Framework/Timer.h"
 
 class CApplication : public CSingleton<CApplication>
 {
 public:
 
-	 CApplication();
-	~CApplication();
+	 CApplication		(void);
+	~CApplication		(void);
 
-	void Run();
+	bool	Create		(void);
+	void	Destroy		(void);
 
-	void Update();
-	void Render();
+	void	Run			(void);
 
-	void Quit() { m_Running = false; }
+	void	Update		(void);
+	void	Render		(void);
+
+	void	Quit		(void) {m_Running = false;}
+
+public:
+
+	CTimer*	GetTimer	(void) const {return m_pTimer;}
 
 private:
 
-	SDL_Window*		m_pWindow;
+	CTimer*	m_pTimer;
 
-	SDL_Renderer*	m_pRenderer;
+	CGame*	m_pGame;
 
-	CGame*			m_pGame;
-
-	bool			m_Running;
+	bool	m_Running;
 
 };

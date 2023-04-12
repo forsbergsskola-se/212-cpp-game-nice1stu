@@ -10,8 +10,9 @@ public:
 	bool Create();
 	void Destroy();
 
-	void Update();
+	void Update(const float Deltatime);
 	void Render();
+	void RenderDebug();
 
 private:
 
