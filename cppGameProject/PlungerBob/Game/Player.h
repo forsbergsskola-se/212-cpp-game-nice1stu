@@ -14,5 +14,5 @@ public:
 	void RenderDebug();
 
 private:
-	
+	CPlayer* m_pPlayer;
 };
