@@ -20,9 +20,8 @@ bool CGame::Create()
 
 void CGame::Destroy()
 {
-
+	CTextureFactory::GetInstance().DestroyTexture(m_pTexture->GetName());
 }
-
 void CGame::Update(const float Deltatime)
 {
 	// TODO: move the input handling to the player class
