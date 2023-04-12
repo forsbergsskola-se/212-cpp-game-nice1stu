@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Framework/Texture.h"
+
 class CGame
 {
 public:
@@ -15,5 +17,5 @@ public:
 	void RenderDebug();
 
 private:
-
+	CTexture* m_pTexture;
 };

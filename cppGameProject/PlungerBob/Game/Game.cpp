@@ -1,8 +1,10 @@
 #include "Game.h"
 
 #include "../Framework/InputHandler.h"
+#include "Framework/TextureFactory.h"
 
 CGame::CGame()
+	: m_pTexture(nullptr)
 {
 }
 
@@ -12,8 +14,7 @@ CGame::~CGame()
 
 bool CGame::Create()
 {
-
-
+	m_pTexture = CTextureFactory::GetInstance().CreateTexture("SpaceshipToilet.bmp");
 	return true;
 }
 
