@@ -1,7 +1,8 @@
 #include "Game.h"
 
-#include "../Framework/InputHandler.h"
+#include "Framework/InputHandler.h"
 #include "Framework/TextureFactory.h"
+#include "Framework/RenderDevice.h"
 
 CGame::CGame()
 	: m_pTexture(nullptr)
@@ -14,13 +15,12 @@ CGame::~CGame()
 
 bool CGame::Create()
 {
-	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Room.png");
 	return true;
 }
 
 void CGame::Destroy()
 {
-	CTextureFactory::GetInstance().DestroyTexture(m_pTexture->GetName());
+
 }
 void CGame::Update(const float Deltatime)
 {
