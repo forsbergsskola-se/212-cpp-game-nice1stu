@@ -1,11 +1,8 @@
 #include "Game.h"
 
 #include "Framework/InputHandler.h"
-#include "Framework/TextureFactory.h"
-#include "Framework/RenderDevice.h"
 
 CGame::CGame()
-	: m_pTexture(nullptr)
 {
 }
 

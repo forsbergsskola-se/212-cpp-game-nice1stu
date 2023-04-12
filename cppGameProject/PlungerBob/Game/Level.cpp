@@ -3,6 +3,7 @@
 #include "Framework/RenderDevice.h"
 
 CLevel::CLevel()
+: m_pTexture(nullptr)
 {
 }
 
