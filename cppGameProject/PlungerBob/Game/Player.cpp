@@ -5,7 +5,11 @@
 #include "Framework/InputHandler.h"
 
 CPlayer::CPlayer()
-	:m_pTexture (nullptr)
+:m_pTexture (nullptr)
+, m_Position(CVector2D::Zero)
+, m_Velocity(CVector2D::Zero)
+,m_Speed(CVector2D::Zero)
+
 {
 }
 
@@ -19,6 +23,8 @@ bool CPlayer::Create()
 
 	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Plumber.png");
 	m_pTexture->SetTextureCoords(0, FrameSize.x, 0, FrameSize.y);
+
+	m_Position = CRenderDevice::GetInstance().GetWindow()->GetCenter() - (FrameSize * 0.5);
 
 	return true;
 }
@@ -35,7 +41,7 @@ void CPlayer::HandleInput()
 
 void CPlayer::Render()
 {
-	CRenderDevice::GetInstance().RenderCopy(m_pTexture);
+	CRenderDevice::GetInstance().RenderCopy(m_pTexture, m_Position);
 }
 
 void CPlayer::RenderDebug()

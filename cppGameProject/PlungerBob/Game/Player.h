@@ -20,5 +20,11 @@ public:
 private:
 	CTexture* m_pTexture;
 
+	CVector2D m_Position;
+	CVector2D m_Velocity;
+	CVector2D m_Speed;
+
+
+
 
 };
