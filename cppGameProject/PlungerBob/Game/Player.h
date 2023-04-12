@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Framework/Texture.h"
+
 class CPlayer
 {
 public:
@@ -10,9 +12,13 @@ public:
 	bool Create();
 	void Destroy();
 
+	void HandleInput();
+
 	void Render();
 	void RenderDebug();
 
 private:
-	CPlayer* m_pPlayer;
+	CTexture* m_pTexture;
+
+
 };

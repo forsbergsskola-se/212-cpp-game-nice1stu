@@ -2,8 +2,10 @@
 
 #include "Framework/RenderDevice.h"
 #include "Framework/TextureFactory.h"
+#include "Framework/InputHandler.h"
 
 CPlayer::CPlayer()
+	:m_pTexture (nullptr)
 {
 }
 
@@ -13,32 +15,30 @@ CPlayer::~CPlayer()
 
 bool CPlayer::Create()
 {
-	//m_pPlayer = CTextureFactory::GetInstance().CreateTexture("Plumber.png");
-	m_pPlayer = new CPlayer;
+	const CVector2D FrameSize = CVector2D(128.0f, 128.0f);
 
-	if (!m_pPlayer->Create())
-	{
-		printf("Error: Failed to create level\n");
-
-		return false;
-	}
+	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Plumber.png");
+	m_pTexture->SetTextureCoords(0, FrameSize.x, 0, FrameSize.y);
 
 	return true;
 }
 
 void CPlayer::Destroy()
 {
-	m_pPlayer->Destroy();
-	delete m_pPlayer;
-	m_pPlayer = nullptr;
+	CTextureFactory::GetInstance().DestroyTexture(m_pTexture->GetName());
+}
+
+void CPlayer::HandleInput()
+{
+
 }
 
 void CPlayer::Render()
 {
-	m_pPlayer->Render();
+	CRenderDevice::GetInstance().RenderCopy(m_pTexture);
 }
 
 void CPlayer::RenderDebug()
 {
-	m_pPlayer->RenderDebug();
+
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Level.h"
+#include "Player.h"
 
 class CGame
 {
@@ -17,4 +18,5 @@ public:
 
 private:
 	CLevel* m_pLevel;
+	CPlayer* m_pPlayer;
 };

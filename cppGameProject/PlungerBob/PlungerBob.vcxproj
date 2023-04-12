@@ -92,6 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,6 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,7 +150,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Framework\Animator.cpp" />
     <ClCompile Include="Framework\InputHandler.cpp" />
+    <ClCompile Include="Framework\Random.cpp" />
     <ClCompile Include="Framework\RenderDevice.cpp" />
     <ClCompile Include="Framework\Texture.cpp" />
     <ClCompile Include="Framework\TextureFactory.cpp" />
@@ -162,8 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Framework\Animator.h" />
     <ClInclude Include="Framework\InputHandler.h" />
     <ClInclude Include="Framework\MathUtilities.h" />
+    <ClInclude Include="Framework\Random.h" />
     <ClInclude Include="Framework\RenderDevice.h" />
     <ClInclude Include="Framework\Singleton.h" />
     <ClInclude Include="Framework\StringUtilities.h" />
