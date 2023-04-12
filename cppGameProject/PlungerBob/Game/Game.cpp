@@ -40,4 +40,5 @@ void CGame::Render()
 
 void CGame::RenderDebug()
 {
+	m_pLevel->RenderDebug();
 }
