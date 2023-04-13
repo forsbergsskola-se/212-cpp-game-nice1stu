@@ -15,7 +15,7 @@ CGame::CGame()
 	, m_CountdownTimerDefault(3.0f)
 	, m_CountdownTimer(m_CountdownTimerDefault)
 	, m_GameStartTimer(1.0f)
-, m_State(EState::IDLE)
+	, m_State(EState::IDLE)
 {
 }
 

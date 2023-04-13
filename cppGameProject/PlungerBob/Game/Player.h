@@ -20,16 +20,22 @@ public:
 	void RenderDebug();
 
 private:
+
+	void ActivateIdleAnimation();
+	void ActivateRunningAnimation();
+
+private:
 	CTexture* m_pTexture;
 
 	CVector2D m_Position;
 	CVector2D m_Velocity;
 	CVector2D m_Speed;
 
+	CAnimator* m_pPlayerAnimatorCurrent;
 	CAnimator* m_pPlayerAnimatorIdle;
 	CAnimator* m_pPlayerAnimatorRunning;
 
-	enum PLayerState
+	enum EPLayerState
 	{
 		IDLE = 0,
 		RUNNING_LEFT,
@@ -40,4 +46,6 @@ private:
 
 	int m_HorizontalDirection;
 	int m_VerticalDirection;
+	int m_LookDirection;
+
 };
