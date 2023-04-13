@@ -1,5 +1,6 @@
 #include "TextureFactory.h"
 
+#include "Application.h"
 #include "StringUtilities.h"
 
 #include <SDL_image.h>

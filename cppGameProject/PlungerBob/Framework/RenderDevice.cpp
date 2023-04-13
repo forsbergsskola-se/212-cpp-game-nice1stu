@@ -1,7 +1,5 @@
 #include "RenderDevice.h"
 
-#include "MathUtilities.h"
-
 CRenderDevice::CRenderDevice(void)
 : m_pWindow(nullptr)
 , m_pRenderer(nullptr)
@@ -112,23 +110,17 @@ void CRenderDevice::RenderCopy(CTexture* pTexture)
 {
 	const CVector2D Position	= pTexture->GetPosition();
 	const CVector2D Size		= pTexture->GetSize();
-	const SDL_Rect*	pClipQuad	= pTexture->GetClipQuad();
+	const SDL_FRect Quad		= {Position.x, Position.y, Size.x, Size.y};
 
-	const SDL_FRect Quad = {(Position.x),								(Position.y),
-							(pClipQuad ? (float)pClipQuad->w : Size.x), (pClipQuad ? (float)pClipQuad->h : Size.y)};
-
-	SDL_RenderCopyExF(m_pRenderer, pTexture->GetTexture(), pClipQuad, &Quad, pTexture->GetAngle(), nullptr, pTexture->GetFlipMethod());
+	SDL_RenderCopyExF(m_pRenderer, pTexture->GetTexture(), pTexture->GetClipQuad(), &Quad, pTexture->GetAngle(), nullptr, pTexture->GetFlipMethod());
 }
 
 void CRenderDevice::RenderCopy(CTexture* pTexture, const CVector2D& rPosition)
 {
-	const CVector2D Size		= pTexture->GetSize();
-	const SDL_Rect*	pClipQuad	= pTexture->GetClipQuad();
+	const CVector2D Size = pTexture->GetSize();
+	const SDL_FRect Quad = {rPosition.x, rPosition.y, Size.x, Size.y};
 
-	const SDL_FRect Quad = {(rPosition.x),								(rPosition.y),
-							(pClipQuad ? (float)pClipQuad->w : Size.x), (pClipQuad ? (float)pClipQuad->h : Size.y)};
-
-	SDL_RenderCopyExF(m_pRenderer, pTexture->GetTexture(), pClipQuad, &Quad, pTexture->GetAngle(), nullptr, pTexture->GetFlipMethod());
+	SDL_RenderCopyExF(m_pRenderer, pTexture->GetTexture(), pTexture->GetClipQuad(), &Quad, pTexture->GetAngle(), nullptr, pTexture->GetFlipMethod());
 }
 
 void CRenderDevice::RenderQuad(const SDL_FRect& rQuad, const bool Filled)

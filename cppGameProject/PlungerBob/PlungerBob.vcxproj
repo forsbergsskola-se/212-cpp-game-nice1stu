@@ -168,7 +168,6 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Framework\Animator.h" />
     <ClInclude Include="Framework\InputHandler.h" />
-    <ClInclude Include="Framework\MathUtilities.h" />
     <ClInclude Include="Framework\Random.h" />
     <ClInclude Include="Framework\RenderDevice.h" />
     <ClInclude Include="Framework\Singleton.h" />

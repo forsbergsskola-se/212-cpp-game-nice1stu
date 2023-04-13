@@ -12,6 +12,7 @@ CAnimator::CAnimator(void)
 , m_EndFrame(0)
 , m_FrameWidth(0)
 , m_FrameHeight(0)
+, m_Row(0)
 , m_CurrentFrame(0)
 , m_Name("")
 , m_Loop(true)
@@ -71,11 +72,6 @@ void CAnimator::Update(const float DeltaTime)
 	}
 
 	m_pTexture->SetTextureCoords(m_ClipQuad.x, m_ClipQuad.x + m_ClipQuad.w, m_ClipQuad.y, m_ClipQuad.y + m_ClipQuad.h);
-}
-
-void CAnimator::Stop(void)
-{
-	Reset();
 }
 
 void CAnimator::Reset(void)

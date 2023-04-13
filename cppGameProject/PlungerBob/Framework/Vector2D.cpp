@@ -22,24 +22,3 @@ CVector2D::~CVector2D(void)
 {
 
 }
-
-float CVector2D::Length(void) const
-{
-	const float XSquared = x * x;
-	const float YSquared = y * y;
-
-	return sqrtf(XSquared + YSquared);
-}
-
-float CVector2D::Normalize(void)
-{
-	const float VectorLength = this->Length();
-
-	if(VectorLength != 0.0f)
-	{
-		this->x = this->x / VectorLength;
-		this->y = this->y / VectorLength;
-	}
-
-	return VectorLength;
-}

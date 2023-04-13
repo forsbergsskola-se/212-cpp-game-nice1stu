@@ -7,16 +7,13 @@ class CRandom
 {
 public:
 
-	 CRandom						(void);
-	~CRandom						(void);
+	 CRandom					(void);
+	~CRandom					(void);
 
-	static void		Seed			(void);
+	static void		Seed		(void);
 
-	static uint32_t	RandomUint		(void);
-	static uint32_t	RandomUint		(const uint32_t Min, const uint32_t Max);
-
-	static float	RandomFloat		(void);
-	static float	RandomFloat		(const float Min, const float Max);
+	static uint32_t	RandomUint	(void);
+	static uint32_t	RandomUint	(const uint32_t Min, const uint32_t Max);
 
 private:
 

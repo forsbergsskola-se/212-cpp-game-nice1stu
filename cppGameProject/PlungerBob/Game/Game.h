@@ -19,6 +19,21 @@ public:
 	void RenderDebug();
 
 private:
+
+	enum EState
+	{
+		IDLE = 0,
+		COUNT_DOWN,
+		PRE_START,
+		ROUND_STARTED,
+		ROUND_ENDED
+	};
+
 	CLevel* m_pLevel;
+
 	CPlayer* m_pPlayer;
+
+	CTexture* m_pStartScreenTexture;
+
+	EState m_State;
 };

@@ -2,7 +2,6 @@
 
 CWindow::CWindow(void)
 : m_pWindow(nullptr)
-, m_Position(CVector2D::Zero)
 , m_Center(CVector2D::Zero)
 , m_Size(CVector2D::Zero)
 {
@@ -33,11 +32,6 @@ bool CWindow::Create(const CVector2D& rSize, const std::string& rTitle)
 
 	SDL_WarpMouseInWindow(m_pWindow, (int32_t)(rSize.x * 0.5f), (int32_t)(rSize.y * 0.5f));
 
-	int32_t XPosition = 0;
-	int32_t YPosition = 0;
-	SDL_GetWindowPosition(m_pWindow, &XPosition, &YPosition);
-
-	m_Position	= CVector2D((float)XPosition, (float)YPosition);
 	m_Center	= rSize * 0.5f;
 	m_Size		= rSize;
 

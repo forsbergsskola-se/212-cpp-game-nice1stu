@@ -94,7 +94,13 @@ void CPlayer::Update(const float Deltatime)
 {
 	const CVector2D MoveAmount = m_Speed * Deltatime;
 
-	m_Position += MoveAmount;
+	m_Position.x += MoveAmount.x;
+
+	
+
+	m_Position.y += MoveAmount.y;
+
+
 }
 
 void CPlayer::Render()

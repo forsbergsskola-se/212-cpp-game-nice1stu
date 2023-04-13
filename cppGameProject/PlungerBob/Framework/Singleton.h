@@ -58,20 +58,6 @@ public:
 		return *s_pInstance;
 	}
 
-	/**
-	* Retrieves a pointer to the instance
-	* Asserting if the instance is not valid (i.e not initialized)
-	* \return A pointer to the instance
-	*/
-	static T*	GetInstancePtr	(void)
-	{
-	#ifdef _DEBUG
-		assert(s_pInstance);
-	#endif
-
-		return s_pInstance;
-	}
-
 private:
 
 	static T* s_pInstance;
