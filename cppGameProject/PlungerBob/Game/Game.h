@@ -36,10 +36,13 @@ private:
 
 	CTexture* m_pStartScreenTexture;
 	CTexture* m_pCountdownTexture;
+	CTexture* m_pGoTexture;
+
 	CAnimator* m_pCountdownAnimator;
 
 	float m_CountdownTimerDefault;
 	float m_CountdownTimer;
+	float m_GameStartTimer;
 
 
 	EState m_State;
