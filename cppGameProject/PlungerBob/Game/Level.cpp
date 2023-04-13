@@ -19,6 +19,7 @@ bool CLevel::Create(void)
 {
 	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Room.png");
 
+	//////////////////////////////////////////////////////////////////////////
 
 	const CVector2D WindowSize = CRenderDevice::GetInstance().GetWindow()->GetSize();
 
@@ -40,6 +41,7 @@ bool CLevel::Create(void)
 	m_CollisionQuads.push_back({720.0f,					430.0f,					120.0f,			192.0f});
 	m_CollisionQuads.push_back({955.0f,					430.0f,					120.0f,			192.0f});
 
+	//////////////////////////////////////////////////////////////////////////
 
 	// Top toilettes
 	m_ToiletteQuads.push_back({142.0f,					100.0f,					60.0f,			105.0f});
@@ -53,6 +55,7 @@ bool CLevel::Create(void)
 	m_ToiletteQuads.push_back({843.0f,					515.0f,					60.0f,			105.0f});
 	m_ToiletteQuads.push_back({1076.0f,					515.0f,					60.0f,			105.0f});
 
+	//////////////////////////////////////////////////////////////////////////
 
 	// Top toilettes triggers
 	m_TriggerQuads.push_back({142.0f,					205.0f,					60.0f,			10.0f});

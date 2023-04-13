@@ -39,6 +39,13 @@ void CPlayer::HandleInput()
 {
 	CInputHandler& rInputHandler = CInputHandler::GetInstance();
 
+	// Pressed Keys
+
+
+
+	/////////////////////////////////////////////////////
+
+	//Held Keys
 	if (rInputHandler.KeyHeld(SDL_SCANCODE_LEFT) && !rInputHandler.KeyHeld(SDL_SCANCODE_RIGHT))
 	{
 		m_Speed.x = -m_Velocity.x;
@@ -59,6 +66,9 @@ void CPlayer::HandleInput()
 		m_Speed.y = m_Velocity.y;
 	}
 
+	/////////////////////////////////////////////////////
+
+	//Released Keys
 	if (rInputHandler.KeyReleased(SDL_SCANCODE_LEFT))
 	{
 		m_Speed.x = 0.0f;

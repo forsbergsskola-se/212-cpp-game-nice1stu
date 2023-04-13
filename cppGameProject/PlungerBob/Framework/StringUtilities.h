@@ -4,7 +4,9 @@
 #include <string>
 #include <vector>
 
-
+/**
+* Extracts the filename (file extension included) from the passed in rString and returns the result as a new std::string
+*/
 static std::string ExtractFileName(const std::string& rString)
 {
 	if(rString.empty())
@@ -21,6 +23,9 @@ static std::string ExtractFileName(const std::string& rString)
 	return rString.substr(FileNameStart);
 }
 
+/**
+* Removes the file extension from a filename or a filepath string and returns the result as a new std::string
+*/
 static std::string RemoveFileExtension(const std::string& rString)
 {
 	if(rString.empty())
