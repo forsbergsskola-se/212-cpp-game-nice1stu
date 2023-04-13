@@ -2,10 +2,17 @@
 
 #include "Level.h"
 #include "Player.h"
+#include "Toilette.h"
+
+#include "Framework/Random.h"
 #include "Framework/Animator.h"
 
 class CGame
 {
+public:
+
+	typedef std::vector<CToilette*> ToiletteList;
+
 public:
 
 	CGame();
@@ -18,6 +25,11 @@ public:
 
 	void Render();
 	void RenderDebug();
+
+private:
+
+	void ActivateRandomToilette();
+	void OnPlumbingStart(const uint32_t ToiletteID);
 
 private:
 
@@ -40,10 +52,16 @@ private:
 
 	CAnimator* m_pCountdownAnimator;
 
+	CRandom	m_RandomNumberGenerator;
+
 	float m_CountdownTimerDefault;
 	float m_CountdownTimer;
 	float m_GameStartTimer;
 
+	uint32_t m_CurrentToilette;
+	uint32_t m_NumActivatedToilettes;
 
 	EState m_State;
+
+	ToiletteList m_Toilettes;
 };

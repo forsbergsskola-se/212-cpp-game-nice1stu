@@ -47,7 +47,7 @@ bool CGame::Create()
 
 	const CVector2D WindowCenter = CRenderDevice::GetInstance().GetWindow()->GetCenter();
 	const CVector2D CountdownFrameSize = CVector2D(164.0f, 228.0f);
-
+	const CVector2D WaterFrameSize = CVector2D(65.0f, 106.0f);
 
 	m_pStartScreenTexture = rTextureFactory.CreateTexture("Start screen.png");
 	m_pCountdownTexture = rTextureFactory.CreateTexture("Countdown.png");
@@ -64,11 +64,30 @@ bool CGame::Create()
 	m_pCountdownAnimator = new CAnimator;
 	m_pCountdownAnimator->Set(m_pCountdownTexture, 10, m_CountdownTimerDefault, 0, 0, CountdownFrameSize, 1.0f, "Countdown", false, CAnimator::EDirection::BACKWARD);
 
+	const CLevel::QuadVector& rToiletteQuads = m_pLevel->GetToiletteQuads();
+
+	for (uint32_t i = 0; i < rToiletteQuads.size(); ++i)
+	{
+		const SDL_FRect ToiletteQuad = rToiletteQuads[i];
+
+		CToilette* pToilette = new CToilette;
+		pToilette->Create(CVector2D(ToiletteQuad.x, ToiletteQuad.y), WaterFrameSize, (i < (rToiletteQuads.size() / 2)));
+
+		m_Toilettes.push_back(pToilette);
+	}
+
 	return true;
 }
 
 void CGame::Destroy()
 {
+	for (CToilette* pToilette : m_Toilettes)
+	{
+		delete pToilette;
+	}
+
+	m_Toilettes.clear();
+
 	delete m_pCountdownAnimator;
 	m_pCountdownAnimator = nullptr;
 
@@ -167,4 +186,35 @@ void CGame::RenderDebug()
 		m_pLevel->RenderDebug();
 		m_pPlayer->RenderDebug();
 	}
+}
+
+void CGame::ActivateRandomToilette()
+{
+	const uint32_t	NumToilettes = (uint32_t)m_Toilettes.size();
+	uint32_t		Index = m_RandomNumberGenerator.RandomUint(0, NumToilettes - 1);
+
+	m_NumActivatedToilettes = 0;
+
+	for (uint32_t i = 0; i < NumToilettes; ++i)
+	{
+		if (m_Toilettes[i]->GetActivated())
+			m_NumActivatedToilettes++;
+	}
+
+	if (m_NumActivatedToilettes < NumToilettes)
+	{
+		while (m_Toilettes[Index]->GetActivated())
+		{
+			Index = m_RandomNumberGenerator.RandomUint(0, NumToilettes - 1);
+		}
+
+		m_Toilettes[Index]->Activate();
+	}
+
+	else
+		m_State = EState::ROUND_ENDED;
+}
+
+void CGame::OnPlumbingStart(const uint32_t ToiletteID)
+{
 }
