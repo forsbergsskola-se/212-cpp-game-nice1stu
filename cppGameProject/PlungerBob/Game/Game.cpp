@@ -92,8 +92,7 @@ void CGame::Update(const float Deltatime)
 	{
 		CApplication::GetInstance().Quit();
 	}
-	//m_pPlayer->HandleInput();
-	//m_pPlayer->Update(Deltatime);
+
 	if (m_State == EState::IDLE)
 	{
 		if (CInputHandler::GetInstance().KeyPressed(SDL_SCANCODE_SPACE))
@@ -123,7 +122,8 @@ void CGame::Update(const float Deltatime)
 	}
 	else if (m_State == EState::ROUND_STARTED)
 	{
-
+		m_pPlayer->HandleInput();
+		m_pPlayer->Update(Deltatime);
 	}
 	else if (m_State == EState::ROUND_ENDED)
 	{
@@ -134,7 +134,7 @@ void CGame::Update(const float Deltatime)
 void CGame::Render()
 {
 	m_pLevel->Render();
-	//m_pPlayer->Render();
+
 	if (m_State == EState::IDLE)
 	{
 		CRenderDevice::GetInstance().RenderCopy(m_pStartScreenTexture);
@@ -149,7 +149,7 @@ void CGame::Render()
 	}
 	else if (m_State == EState::ROUND_STARTED)
 	{
-
+		m_pPlayer->Render();
 	}
 	else if (m_State == EState::ROUND_ENDED)
 	{
@@ -159,6 +159,9 @@ void CGame::Render()
 
 void CGame::RenderDebug()
 {
-	//m_pLevel->RenderDebug();
-	m_pPlayer->RenderDebug();
+	if (m_State == EState::ROUND_STARTED)
+	{
+		m_pLevel->RenderDebug();
+		m_pPlayer->RenderDebug();
+	}
 }

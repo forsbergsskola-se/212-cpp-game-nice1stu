@@ -22,6 +22,7 @@ bool CPlayer::Create()
 	const CVector2D FrameSize = CVector2D(128.0f, 128.0f);
 
 	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Plumber.png");
+	m_pTexture->SetSize(FrameSize);
 	m_pTexture->SetTextureCoords(0, FrameSize.x, 0, FrameSize.y);
 
 	m_Position = CRenderDevice::GetInstance().GetWindow()->GetCenter() - (FrameSize * 0.5);
