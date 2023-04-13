@@ -59,6 +59,9 @@
     <ClCompile Include="Framework\Window.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Toilette.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Game.h">
@@ -105,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="Framework\Window.h">
       <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Toilette.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

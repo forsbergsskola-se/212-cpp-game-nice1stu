@@ -230,8 +230,8 @@ void CPlayer::RenderDebug()
 
 void CPlayer::PlumbingFinished()
 {
-	m_pCurrentAnimation = m_pAnimatorIdle;
-	m_pCurrentAnimation->Reser();
+	m_pPlayerAnimatorCurrent = m_pPlayerAnimatorIdle;
+	m_pPlayerAnimatorCurrent->Reset();
 
 	m_Plumbing = false;
 }

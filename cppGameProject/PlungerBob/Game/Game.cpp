@@ -126,7 +126,7 @@ void CGame::Update(const float Deltatime)
 	else if (m_State == EState::ROUND_STARTED)
 	{
 		m_pPlayer->HandleInput();
-		m_pPlayer->Update(Deltatime);
+		m_pPlayer->Update(m_pLevel->GetCollisionQuads(), m_pLevel->GetToiletteQuads(), m_pLevel->GetTriggerQuads(), Deltatime);
 	}
 	else if (m_State == EState::ROUND_ENDED)
 	{
