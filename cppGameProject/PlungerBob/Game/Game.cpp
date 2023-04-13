@@ -6,9 +6,13 @@
 #include "Application.h"
 
 CGame::CGame()
-: m_pLevel(nullptr)
-, m_pPlayer(nullptr)
-, m_pStartScreenTexture(nullptr)
+	: m_pLevel(nullptr)
+	, m_pPlayer(nullptr)
+	, m_pStartScreenTexture(nullptr)
+	, m_pCountdownTexture(nullptr)
+	, m_pCountdownAnimator(nullptr)
+	, m_CountdownTimerDefault(3.0f)
+	, m_CountdownTimer(m_CountdownTimerDefault)
 , m_State(EState::IDLE)
 {
 }
@@ -37,17 +41,34 @@ bool CGame::Create()
 		return false;
 	}
 
-	const CVector2D WindowCenter = CRenderDevice::GetInstance().GetWindow()->GetCenter();
+	CTextureFactory& rTextureFactory = CTextureFactory::GetInstance();
 
-	m_pStartScreenTexture = CTextureFactory::GetInstance().CreateTexture("Start screen.png");
+	const CVector2D WindowCenter = CRenderDevice::GetInstance().GetWindow()->GetCenter();
+	const CVector2D CountdownFrameSize = CVector2D(164.0f, 228.0f);
+
+
+	m_pStartScreenTexture = rTextureFactory.CreateTexture("Start screen.png");
+	m_pCountdownTexture = rTextureFactory.CreateTexture("Countdown.png");
+
+
 	m_pStartScreenTexture->SetPosition(WindowCenter - m_pStartScreenTexture->GetSize() * 0.5f);
+
+	m_pCountdownTexture->SetSize(CountdownFrameSize);
+	m_pCountdownTexture->SetPosition(WindowCenter - m_pCountdownTexture->GetSize() * 0.5f);
+	m_pCountdownTexture->SetTextureCoords(CountdownFrameSize.x * m_CountdownTimer, (CountdownFrameSize.x * m_CountdownTimer) + CountdownFrameSize.x, 0, CountdownFrameSize.y);
+
+	m_pCountdownAnimator = new CAnimator;
+	m_pCountdownAnimator->Set(m_pCountdownTexture, 10, m_CountdownTimerDefault, 0, 0, CountdownFrameSize, 1.0f, "Countdown", false, CAnimator::EDirection::BACKWARD);
 
 	return true;
 }
 
 void CGame::Destroy()
 {
-	CTextureFactory::GetInstance().DestroyTexture(m_pStartScreenTexture->GetName());
+	CTextureFactory& rTextureFactory = CTextureFactory::GetInstance();
+
+	rTextureFactory.DestroyTexture(m_pCountdownTexture->GetName());
+	rTextureFactory.DestroyTexture(m_pStartScreenTexture->GetName());
 
 	m_pPlayer->Destroy();
 	delete m_pPlayer;
@@ -77,7 +98,14 @@ void CGame::Update(const float Deltatime)
 	}
 	else if (m_State == EState::COUNT_DOWN)
 	{
+		m_pCountdownAnimator->Update(Deltatime);
 
+		if (m_pCountdownAnimator->GetCurrentFrame() == m_pCountdownAnimator->GetEndFrame())
+		{
+			m_pCountdownAnimator->Reset();
+
+			m_State = EState::PRE_START;
+		}
 	}
 	else if (m_State == EState::PRE_START)
 	{
@@ -103,7 +131,7 @@ void CGame::Render()
 	}
 	else if (m_State == EState::COUNT_DOWN)
 	{
-
+		CRenderDevice::GetInstance().RenderCopy(m_pCountdownTexture);
 	}
 	else if (m_State == EState::PRE_START)
 	{

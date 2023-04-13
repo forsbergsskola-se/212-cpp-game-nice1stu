@@ -2,6 +2,7 @@
 
 #include "Level.h"
 #include "Player.h"
+#include "Framework/Animator.h"
 
 class CGame
 {
@@ -34,6 +35,12 @@ private:
 	CPlayer* m_pPlayer;
 
 	CTexture* m_pStartScreenTexture;
+	CTexture* m_pCountdownTexture;
+	CAnimator* m_pCountdownAnimator;
+
+	float m_CountdownTimerDefault;
+	float m_CountdownTimer;
+
 
 	EState m_State;
 };
