@@ -69,6 +69,9 @@ bool CGame::Create()
 
 void CGame::Destroy()
 {
+	delete m_pCountdownAnimator;
+	m_pCountdownAnimator = nullptr;
+
 	CTextureFactory& rTextureFactory = CTextureFactory::GetInstance();
 
 	rTextureFactory.DestroyTexture(m_pGoTexture->GetName());

@@ -8,7 +8,9 @@ CPlayer::CPlayer()
 :m_pTexture (nullptr)
 , m_Position(CVector2D::Zero)
 , m_Velocity(CVector2D::Zero)
-,m_Speed(CVector2D::Zero)
+, m_Speed(CVector2D::Zero)
+, m_pPlayerAnimatorIdle(nullptr)
+, m_pPlayerAnimatorRunning(nullptr)
 
 {
 }
@@ -28,11 +30,23 @@ bool CPlayer::Create()
 	m_Position = CRenderDevice::GetInstance().GetWindow()->GetCenter() - (FrameSize * 0.5);
 	m_Velocity = CVector2D(300.0f, 300.0f);
 
+	m_pPlayerAnimatorIdle = new CAnimator;
+	m_pPlayerAnimatorRunning = new CAnimator;
+	m_pPlayerAnimatorIdle->Set(m_pTexture, 9, 0, 8, 0, FrameSize, 15.0f, "PlumberIdle", true, CAnimator::EDirection::FORWARD);
+	m_pPlayerAnimatorRunning->Set(m_pTexture, 15, 0, 14, 1, FrameSize, 55.0f, "PlumberRunning", true, CAnimator::EDirection::FORWARD);
+
+
 	return true;
 }
 
 void CPlayer::Destroy()
 {
+	delete m_pPlayerAnimatorRunning;
+	m_pPlayerAnimatorRunning = nullptr;
+
+	delete m_pPlayerAnimatorIdle;
+	m_pPlayerAnimatorIdle = nullptr;
+
 	CTextureFactory::GetInstance().DestroyTexture(m_pTexture->GetName());
 }
 
@@ -100,7 +114,6 @@ void CPlayer::Update(const float Deltatime)
 	
 
 	m_Position.y += MoveAmount.y;
-
 
 }
 
