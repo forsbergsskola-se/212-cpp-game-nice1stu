@@ -13,3 +13,7 @@ This is a Whack-A-Mole like game where the player controls Bob, our titular char
 plunging back the pooh that threatens to overflow.
 
 Coded in C++, graphics using SDL.  
+
+Link to YouTube video  
+https://youtu.be/7yXsspzvNbI  
+
