@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Framework/Texture.h"
 #include "Framework/Animator.h"
+#include "Framework/Texture.h"
 #include "Framework/Vector2D.h"
+
 #include <functional>
 #include <vector>
 
@@ -10,8 +11,8 @@ class CPlayer
 {
 public:
 
-	typedef std::vector<SDL_FRect> QuadVector;
-	typedef std::function<void(const uint32_t ToiletteID)> PlumbingStartCB;
+	typedef std::vector<SDL_FRect>							QuadVector;
+	typedef std::function<void(const uint32_t ToiletteID)>	PlumbingStartCB; // Function pointer
 
 public:
 
@@ -31,37 +32,18 @@ public:
 
 public:
 
-	void SetPlumbingStartCallback(PlumbingStartCB pPlumbingStartCallback)
-	{
-		m_pPlumbingStartCallback = pPlumbingStartCallback;
-	}
+	void SetPlumbingStartCallback(PlumbingStartCB pPlumbingStartCallback) {m_pPlumbingStartCallback = pPlumbingStartCallback;}
 
 private:
 
 	void CheckTriggers(const QuadVector& rTriggerQuads);
 	void ResolveXCollision(const SDL_FRect& LevelCollisionQuad, const CVector2D& MoveAmount);
 	void ResolveYCollision(const SDL_FRect& LevelCollisionQuad, const CVector2D& MoveAmount);
-	void ActivateIdleAnimation();
-	void ActivateRunningAnimation();
+	void ActivateAnimation(CAnimator* pAnimator);
 
 private:
-	CTexture* m_pTexture;
 
-	CVector2D m_Position;
-	CVector2D m_Velocity;
-	CVector2D m_Speed;
-	CVector2D m_CollisionQuadOffset;
-
-	CAnimator* m_pPlayerAnimatorCurrent;
-	CAnimator* m_pPlayerAnimatorIdle;
-	CAnimator* m_pPlayerAnimatorRunning;
-
-	PlumbingStartCB m_pPlumbingStartCallback;
-
-	uint32_t m_CurrentTRiggerID;
-
-
-	enum EPLayerState
+	enum EState
 	{
 		IDLE = 0,
 		RUNNING_LEFT,
@@ -70,11 +52,30 @@ private:
 		RUNNING_DOWN
 	};
 
-	uint32_t m_HorizontalDirection;
-	uint32_t m_VerticalDirection;
+private:
+
+	// A function pointer that's pointing to a function that will be called whenever the player starts a toilette plumbing
+	PlumbingStartCB m_pPlumbingStartCallback;
+
+	CTexture* m_pTexture;
+
+	CAnimator* m_pAnimatorCurrent;
+	CAnimator* m_pAnimatorIdle;
+	CAnimator* m_pAnimatorRunning;
+
+	CVector2D m_Position;
+	CVector2D m_Velocity;
+	CVector2D m_Speed;
+	CVector2D m_CollisionQuadOffset;
+
 	uint32_t m_LookDirection;
+
+	int32_t m_CurrentTriggerID;
+	int32_t m_HorizontalDirection;
+	int32_t m_VerticalDirection;
 
 	bool m_Plumbing;
 
 	SDL_FRect m_CollisionQuad;
+
 };
