@@ -15,10 +15,23 @@ plunging back the pooh that threatens to overflow.
 Coded in C++, graphics using SDL.  
 
 ScreenShots:  
-
-![BobStartScreen720p](https://user-images.githubusercontent.com/112468923/231916703-b334c6d7-5230-47f5-af97-cf54a59d1935.png)![BobToiletsOverflowing720p](https://user-images.githubusercontent.com/112468923/231916757-aa6e4aac-2226-470d-975e-22a584be138f.png)
-![BobPlunging720p](https://user-images.githubusercontent.com/112468923/231916797-55e6b067-6263-4df1-86ec-a81fc7f74f59.png)![BobMissionCritical720p](https://user-images.githubusercontent.com/112468923/231916810-eb992628-acec-42ff-a7af-08d650547f9f.png)
-![BobGameOver720p](https://user-images.githubusercontent.com/112468923/231916821-1c14fb71-b017-4172-83bc-841becf279d1.png)![BobFolderStructure720p](https://user-images.githubusercontent.com/112468923/231916833-d8754b45-2af4-4396-b83a-cff58f78b1ad.png)
+Start Screen - Pres [SPACE] to start game.
+![BobStartScreen720p](https://user-images.githubusercontent.com/112468923/231916703-b334c6d7-5230-47f5-af97-cf54a59d1935.png)  
+  
+Game Screen - Random toilets start overflowing.  
+![BobToiletsOverflowing720p](https://user-images.githubusercontent.com/112468923/231916757-aa6e4aac-2226-470d-975e-22a584be138f.png)  
+  
+Fighting the overflow !  
+![BobPlunging720p](https://user-images.githubusercontent.com/112468923/231916797-55e6b067-6263-4df1-86ec-a81fc7f74f59.png)  
+  
+It's getting critical !  
+![BobMissionCritical720p](https://user-images.githubusercontent.com/112468923/231916810-eb992628-acec-42ff-a7af-08d650547f9f.png)  
+  
+Game Over  
+![BobGameOver720p](https://user-images.githubusercontent.com/112468923/231916821-1c14fb71-b017-4172-83bc-841becf279d1.png)  
+  
+A look at the project folder structure  
+![BobFolderStructure720p](https://user-images.githubusercontent.com/112468923/231916833-d8754b45-2af4-4396-b83a-cff58f78b1ad.png)
 
 Link to YouTube video  
 https://youtu.be/7yXsspzvNbI  
