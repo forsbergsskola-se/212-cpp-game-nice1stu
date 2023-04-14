@@ -11,9 +11,8 @@
 
 class CInputHandler : public CSingleton<CInputHandler>
 {
-	/**
-	* Keyboard state struct
-	*/
+	// Keyboard state struct
+
 	struct SKeyboard
 	{
 		SKeyboard(void)
@@ -26,9 +25,8 @@ class CInputHandler : public CSingleton<CInputHandler>
 		bool PreviousKeyState[NUM_KEYBOARD_KEYS];
 	};
 
-	/**
-	* Mouse state struct
-	*/
+	// Mouse state struct
+
 	struct SMouse
 	{
 		SMouse(void)

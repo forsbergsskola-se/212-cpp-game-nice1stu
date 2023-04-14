@@ -54,7 +54,7 @@ private:
 
 private:
 
-	// A function pointer that's pointing to a function that will be called whenever the player starts a toilette plumbing
+	// A function pointer that's pointing to a function that will be called whenever the player starts a toilet plumbing
 	PlumbingStartCB m_pPlumbingStartCallback;
 
 	CTexture* m_pTexture;

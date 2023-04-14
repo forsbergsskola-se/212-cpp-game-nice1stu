@@ -60,8 +60,6 @@ bool CGame::Create()
 
 	m_pPlayer->SetPlumbingStartCallback(std::bind(&CGame::OnPlumbingStart, this, std::placeholders::_1));
 
-	//////////////////////////////////////////////////////////////////////////
-
 	// Create textures
 
 	CTextureFactory&	rTextureFactory		= CTextureFactory::GetInstance();
@@ -95,8 +93,6 @@ bool CGame::Create()
 	m_pEndScreenTexture->SetSize(pWindow->GetSize());
 	m_pEndScreenTexture->SetPosition(WindowCenter - (m_pEndScreenTexture->GetSize() * 0.5f));
 
-	//////////////////////////////////////////////////////////////////////////
-
 	// Create the animators that will animate the countdown texture and the plumbing texture
 
 	m_pCountdownAnimator = new CAnimator;
@@ -104,8 +100,6 @@ bool CGame::Create()
 
 	m_pPlumbingAnimator	= new CAnimator;
 	m_pPlumbingAnimator->Set(m_pPlungerTexture, 10, 0, 9, 0, PlungerFrameSize, 8.0f, "Plumbing", true, CAnimator::EDirection::FORWARD);
-
-	//////////////////////////////////////////////////////////////////////////
 
 	// Create the toilets
 
@@ -120,8 +114,6 @@ bool CGame::Create()
 
 		m_Toilets.push_back(pToilet);
 	}
-
-	//////////////////////////////////////////////////////////////////////////
 
 	m_RandomNumberGenerator.Seed();
 

@@ -53,10 +53,6 @@ bool CPlayer::Create()
 	m_pTexture->SetSize(FrameSize);
 	m_pTexture->SetTextureCoords(0, (uint32_t)FrameSize.x, 0, (uint32_t)FrameSize.y);
 
-	//////////////////////////////////////////////////////////////////////////
-
-	// Create animators that will be used more the player idle- and player running animation
-
 	m_pAnimatorIdle		= new CAnimator;
 	m_pAnimatorRunning	= new CAnimator;
 	m_pAnimatorIdle->Set(m_pTexture,	9,	0, 8,	0, FrameSize, 15.0f, "PlumberIdle",		true, CAnimator::EDirection::FORWARD);
@@ -64,15 +60,13 @@ bool CPlayer::Create()
 
 	m_pAnimatorCurrent = m_pAnimatorIdle;
 
-	//////////////////////////////////////////////////////////////////////////
-
 	m_Position = CRenderDevice::GetInstance().GetWindow()->GetCenter() - (FrameSize * 0.5f);
 	m_Velocity = CVector2D(300.0f, 300.0f);
 
 	// An offset from each animation frame's upper left corner to where the player graphics starts, which is used for collision detection, together with the m_CollisionQuad below
 	m_CollisionQuadOffset = CVector2D(35.0f, 10.0f);
 
-	// Define the player collision quad that will be used to detect collision between the player and the walls, toilettes and toilette triggers
+	// Player collider
 	m_CollisionQuad = {m_Position.x + m_CollisionQuadOffset.x, m_Position.y + m_CollisionQuadOffset.y, PlayerSize.x, PlayerSize.y};
 
 	return true;
@@ -111,8 +105,6 @@ void CPlayer::HandleInput()
 	if(m_Plumbing)
 		return;
 
-	//////////////////////////////////////////////////////////////////////////
-
 	//Held Keys
 
 	if(rInputHandler.KeyHeld(SDL_SCANCODE_LEFT) && !rInputHandler.KeyHeld(SDL_SCANCODE_RIGHT))
@@ -148,8 +140,6 @@ void CPlayer::HandleInput()
 
 		ActivateAnimation(m_pAnimatorRunning);
 	}
-
-	/////////////////////////////////////////////////////
 
 	// Released Keys
 
