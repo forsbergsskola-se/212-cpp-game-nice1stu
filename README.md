@@ -16,7 +16,7 @@ Coded in C++, graphics using SDL.
 
 ScreenShots:  
 Start Screen - Pres [SPACE] to start game.
-![BobStartScreen720p](https://user-images.githubusercontent.com/112468923/231916703-b334c6d7-5230-47f5-af97-cf54a59d1935.png)  
+![Screenshot 2023-04-16 061811](https://user-images.githubusercontent.com/112468923/232266281-86d7b077-0ffa-4a18-ad72-c3501e08ffec.png)
   
 Game Screen - Random toilets start overflowing.  
 ![BobToiletsOverflowing720p](https://user-images.githubusercontent.com/112468923/231916757-aa6e4aac-2226-470d-975e-22a584be138f.png)  
