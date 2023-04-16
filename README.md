@@ -34,5 +34,4 @@ A look at the project folder structure
 ![BobFolderStructure720p](https://user-images.githubusercontent.com/112468923/231916833-d8754b45-2af4-4396-b83a-cff58f78b1ad.png)
 
 Link to YouTube video  
-https://youtu.be/7yXsspzvNbI  
-
+https://youtu.be/54h2x-Sj1m4  
