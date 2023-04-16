@@ -3,7 +3,7 @@
 #include "Framework/Texture.h"
 #include "Framework/Vector2D.h"
 
-class CToilette
+class CToilet
 {
 public:
 
@@ -17,8 +17,8 @@ public:
 
 public:
 
-	 CToilette					(void);
-	~CToilette					(void);
+	 CToilet					(void);
+	~CToilet					(void);
 
 	void		Create			(const CVector2D& rPosition, const CVector2D& rFrameSize, const bool Top);
 

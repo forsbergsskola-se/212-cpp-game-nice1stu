@@ -11,7 +11,7 @@ class CGame
 {
 public:
 
-	typedef std::vector<CToilette*> ToiletteList;
+	typedef std::vector<CToilet*> ToiletList;
 
 public:
 
@@ -29,8 +29,8 @@ public:
 private:
 
 	void Reset();
-	void ActivateRandomToilette();
-	void OnPlumbingStart(const uint32_t ToiletteID);
+	void ActivateRandomToilet();
+	void OnPlumbingStart(const uint32_t ToiletID);
 
 private:
 
@@ -72,12 +72,12 @@ private:
 	float m_EndScreenTimerDefault;
 	float m_EndScreenTimer;
 
-	uint32_t m_CurrentToilette;
-	uint32_t m_NumActivatedToilettes;
+	uint32_t m_CurrentToilet;
+	uint32_t m_NumActivatedToilets;
 
 	bool m_PlumbingStarted;
 
 	EState m_State;
 
-	ToiletteList m_Toilettes;
+	ToiletList m_Toilets;
 };

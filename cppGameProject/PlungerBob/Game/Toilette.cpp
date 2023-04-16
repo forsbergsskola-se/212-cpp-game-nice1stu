@@ -2,7 +2,7 @@
 
 #include "Framework/RenderDevice.h"
 
-CToilette::CToilette(void)
+CToilet::CToilet(void)
 : m_Position(CVector2D::Zero)
 , m_FrameSize(CVector2D::Zero)
 , m_TimerDefault(1.5f)
@@ -14,12 +14,12 @@ CToilette::CToilette(void)
 
 }
 
-CToilette::~CToilette(void)
+CToilet::~CToilet(void)
 {
 
 }
 
-void CToilette::Create(const CVector2D& rPosition, const CVector2D& rFrameSize, const bool Top)
+void CToilet::Create(const CVector2D& rPosition, const CVector2D& rFrameSize, const bool Top)
 {
 	m_Position = rPosition;
 
@@ -28,7 +28,7 @@ void CToilette::Create(const CVector2D& rPosition, const CVector2D& rFrameSize, 
 	m_Top = Top;
 }
 
-void CToilette::Update(const float DeltaTime)
+void CToilet::Update(const float DeltaTime)
 {
 	if(!m_Activated || (m_State == EState::FULL))
 		return;
@@ -46,7 +46,7 @@ void CToilette::Update(const float DeltaTime)
 	}
 }
 
-void CToilette::Render(CTexture* pWaterTexture)
+void CToilet::Render(CTexture* pWaterTexture)
 {
 	const uint32_t Left		= (uint32_t)(m_FrameSize.x * m_State);
 	const uint32_t Right	= (uint32_t)((m_FrameSize.x * m_State) + m_FrameSize.x);
@@ -58,7 +58,7 @@ void CToilette::Render(CTexture* pWaterTexture)
 	CRenderDevice::GetInstance().RenderCopy(pWaterTexture, m_Position);
 }
 
-void CToilette::RenderDebug(void)
+void CToilet::RenderDebug(void)
 {
 	CRenderDevice::GetInstance().SetRenderDrawColor({0, 0, 255, 255});
 
@@ -66,14 +66,14 @@ void CToilette::RenderDebug(void)
 	CRenderDevice::GetInstance().RenderQuad(Quad, false);
 }
 
-void CToilette::Activate(void)
+void CToilet::Activate(void)
 {
 	Reset();
 
 	m_Activated = true;
 }
 
-void CToilette::Reset(void)
+void CToilet::Reset(void)
 {
 	m_Timer = m_TimerDefault;
 

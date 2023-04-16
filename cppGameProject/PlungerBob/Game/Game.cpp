@@ -26,8 +26,8 @@ CGame::CGame()
 , m_PlumbingTimer(m_PlumbingTimerDefault)
 , m_EndScreenTimerDefault(4.0f)
 , m_EndScreenTimer(m_EndScreenTimerDefault)
-, m_CurrentToilette(0)
-, m_NumActivatedToilettes(0)
+, m_CurrentToilet(0)
+, m_NumActivatedToilets(0)
 , m_PlumbingStarted(false)
 , m_State(EState::IDLE)
 {
@@ -107,18 +107,18 @@ bool CGame::Create()
 
 	//////////////////////////////////////////////////////////////////////////
 
-	// Create the toilettes
+	// Create the toilets
 
-	const CLevel::QuadVector& rToiletteQuads = m_pLevel->GetToiletteQuads();
+	const CLevel::QuadVector& rToiletQuads = m_pLevel->GetToiletQuads();
 
 	uint32_t Index = 0;
 
-	for(const SDL_FRect& rToiletteQuad : rToiletteQuads)
+	for(const SDL_FRect& rToiletQuad : rToiletQuads)
 	{
-		CToilette* pToilette = new CToilette;
-		pToilette->Create(CVector2D(rToiletteQuad.x, rToiletteQuad.y), WaterFrameSize, (Index < (rToiletteQuads.size() / 2)));
+		CToilet* pToilet = new CToilet;
+		pToilet->Create(CVector2D(rToiletQuad.x, rToiletQuad.y), WaterFrameSize, (Index < (rToiletQuads.size() / 2)));
 
-		m_Toilettes.push_back(pToilette);
+		m_Toilets.push_back(pToilet);
 
 		++Index;
 	}
@@ -132,12 +132,12 @@ bool CGame::Create()
 
 void CGame::Destroy()
 {
-	for(CToilette* pToilette : m_Toilettes)
+	for(CToilet* pToilet : m_Toilets)
 	{
-		delete pToilette;
+		delete pToilet;
 	}
 
-	m_Toilettes.clear();
+	m_Toilets.clear();
 
 	delete m_pCountdownAnimator;
 	m_pCountdownAnimator = nullptr;
@@ -204,7 +204,7 @@ void CGame::Update(const float Deltatime)
 	else if(m_State == EState::ROUND_STARTED)
 	{
 		m_pPlayer->HandleInput();
-		m_pPlayer->Update(m_pLevel->GetCollisionQuads(), m_pLevel->GetToiletteQuads(), m_pLevel->GetTriggerQuads(), Deltatime);
+		m_pPlayer->Update(m_pLevel->GetCollisionQuads(), m_pLevel->GetToiletQuads(), m_pLevel->GetTriggerQuads(), Deltatime);
 
 		m_ActivationTimer -= Deltatime;
 
@@ -212,14 +212,14 @@ void CGame::Update(const float Deltatime)
 		{
 			m_ActivationTimer = m_ActivationTimerDefault;
 
-			ActivateRandomToilette();
+			ActivateRandomToilet();
 
 			m_pPlumbingAnimator->Reset();
 		}
 
-		for(CToilette* pToilette : m_Toilettes)
+		for(CToilet* pToilet : m_Toilets)
 		{
-			pToilette->Update(Deltatime);
+			pToilet->Update(Deltatime);
 		}	
 
 		if(m_PlumbingStarted)
@@ -230,12 +230,12 @@ void CGame::Update(const float Deltatime)
 			{
 				m_pPlayer->PlumbingFinished();
 
-				m_Toilettes[m_CurrentToilette]->Reset();
+				m_Toilets[m_CurrentToilet]->Reset();
 
 				m_PlumbingTimer = 0.0f;
 
-				if(m_NumActivatedToilettes > 0)
-					m_NumActivatedToilettes--;
+				if(m_NumActivatedToilets > 0)
+					m_NumActivatedToilets--;
 
 				m_PlumbingStarted = false;
 			}
@@ -272,15 +272,15 @@ void CGame::Render()
 
 	else if(m_State == EState::ROUND_STARTED)
 	{
-		for(CToilette* pToilette : m_Toilettes)
+		for(CToilet* pToilet : m_Toilets)
 		{
-			pToilette->Render(m_pWaterTexture);
+			pToilet->Render(m_pWaterTexture);
 		}
 
 		m_pPlayer->Render();
 
-		// When there's 6 or more toilettes that are full, flash a red transparent quad over the whole screen 
-		if(m_NumActivatedToilettes >= m_Toilettes.size() - 2)
+		// When there's 6 or more toilets that are full, flash a red transparent quad over the whole screen 
+		if(m_NumActivatedToilets >= m_Toilets.size() - 2)
 		{
 			CRenderDevice& rRenderDevice = CRenderDevice::GetInstance();
 
@@ -307,9 +307,9 @@ void CGame::RenderDebug()
 	{
 	//	m_pLevel->RenderDebug();
 
-		for(CToilette* pToilette : m_Toilettes)
+		for(CToilet* pToilet : m_Toilets)
 		{
-		//	pToilette->RenderDebug();
+		//	pToilet->RenderDebug();
 		}
 
 	//	m_pPlayer->RenderDebug();
@@ -322,40 +322,40 @@ void CGame::Reset()
 
 	m_ActivationTimer = 0.0f;
 
-	m_CurrentToilette		= 0;
-	m_NumActivatedToilettes = 0;
+	m_CurrentToilet		= 0;
+	m_NumActivatedToilets = 0;
 
 	m_PlumbingStarted = false;
 
 	m_pPlayer->Reset();
 
-	for(CToilette* pToilette : m_Toilettes)
+	for(CToilet* pToilet : m_Toilets)
 	{
-		pToilette->Reset();
+		pToilet->Reset();
 	}
 }
 
-void CGame::ActivateRandomToilette()
+void CGame::ActivateRandomToilet()
 {
-	const uint32_t	NumToilettes	= (uint32_t)m_Toilettes.size();
-	uint32_t		Index			= m_RandomNumberGenerator.RandomUint(0, NumToilettes - 1);
+	const uint32_t	NumToilets	= (uint32_t)m_Toilets.size();
+	uint32_t		Index			= m_RandomNumberGenerator.RandomUint(0, NumToilets - 1);
 
-	m_NumActivatedToilettes = 0;
+	m_NumActivatedToilets = 0;
 
-	for(CToilette* pToilette : m_Toilettes)
+	for(CToilet* pToilet : m_Toilets)
 	{
-		if(pToilette->GetActivated())
-			m_NumActivatedToilettes++;
+		if(pToilet->GetActivated())
+			m_NumActivatedToilets++;
 	}
 
-	if(m_NumActivatedToilettes < NumToilettes)
+	if(m_NumActivatedToilets < NumToilets)
 	{
-		while(m_Toilettes[Index]->GetActivated())
+		while(m_Toilets[Index]->GetActivated())
 		{
-			Index = m_RandomNumberGenerator.RandomUint(0, NumToilettes - 1);
+			Index = m_RandomNumberGenerator.RandomUint(0, NumToilets - 1);
 		}
 
-		m_Toilettes[Index]->Activate();
+		m_Toilets[Index]->Activate();
 	}
 
 	else
@@ -366,7 +366,7 @@ void CGame::OnPlumbingStart(const uint32_t ToiletteID)
 {
 	m_PlumbingTimer = m_PlumbingTimerDefault;
 
-	m_CurrentToilette = ToiletteID;
+	m_CurrentToilet = ToiletteID;
 
 	m_PlumbingStarted = true;
 }

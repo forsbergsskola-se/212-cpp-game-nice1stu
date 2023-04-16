@@ -43,27 +43,27 @@ bool CLevel::Create(void)
 
 	//////////////////////////////////////////////////////////////////////////
 
-	// Top toilettes
-	m_ToiletteQuads.push_back({142.0f,					100.0f,					60.0f,			105.0f});
-	m_ToiletteQuads.push_back({375.0f,					100.0f,					60.0f,			105.0f});
-	m_ToiletteQuads.push_back({843.0f,					100.0f,					60.0f,			105.0f});
-	m_ToiletteQuads.push_back({1076.0f,					100.0f,					60.0f,			105.0f});
+	// Top toilets
+	m_ToiletQuads.push_back({142.0f,					100.0f,					60.0f,			105.0f});
+	m_ToiletQuads.push_back({375.0f,					100.0f,					60.0f,			105.0f});
+	m_ToiletQuads.push_back({843.0f,					100.0f,					60.0f,			105.0f});
+	m_ToiletQuads.push_back({1076.0f,					100.0f,					60.0f,			105.0f});
 
-	// Bottom toilettes
-	m_ToiletteQuads.push_back({142.0f,					515.0f,					60.0f,			105.0f});
-	m_ToiletteQuads.push_back({375.0f,					515.0f,					60.0f,			105.0f});
-	m_ToiletteQuads.push_back({843.0f,					515.0f,					60.0f,			105.0f});
-	m_ToiletteQuads.push_back({1076.0f,					515.0f,					60.0f,			105.0f});
+	// Bottom toilets
+	m_ToiletQuads.push_back({142.0f,					515.0f,					60.0f,			105.0f});
+	m_ToiletQuads.push_back({375.0f,					515.0f,					60.0f,			105.0f});
+	m_ToiletQuads.push_back({843.0f,					515.0f,					60.0f,			105.0f});
+	m_ToiletQuads.push_back({1076.0f,					515.0f,					60.0f,			105.0f});
 
 	//////////////////////////////////////////////////////////////////////////
 
-	// Top toilettes triggers
+	// Top toilets triggers
 	m_TriggerQuads.push_back({142.0f,					205.0f,					60.0f,			10.0f});
 	m_TriggerQuads.push_back({375.0f,					205.0f,					60.0f,			10.0f});
 	m_TriggerQuads.push_back({843.0f,					205.0f,					60.0f,			10.0f});
 	m_TriggerQuads.push_back({1076.0f,					205.0f,					60.0f,			10.0f});
 
-	// Bottom toilettes triggers
+	// Bottom toilets triggers
 	m_TriggerQuads.push_back({142.0f,					505.0f,					60.0f,			10.0f});
 	m_TriggerQuads.push_back({375.0f,					505.0f,					60.0f,			10.0f});
 	m_TriggerQuads.push_back({843.0f,					505.0f,					60.0f,			10.0f});
@@ -75,7 +75,7 @@ bool CLevel::Create(void)
 void CLevel::Destroy(void)
 {
 	m_CollisionQuads.clear();
-	m_ToiletteQuads.clear();
+	m_ToiletQuads.clear();
 	m_TriggerQuads.clear();
 
 	CTextureHandler::GetInstance().DestroyTexture(m_pTexture->GetName());
@@ -97,7 +97,7 @@ void CLevel::RenderDebug(void)
 		rRenderDevice.RenderQuad(rQuad, true);
 	}
 
-	for(const SDL_FRect& rQuad : m_ToiletteQuads)
+	for(const SDL_FRect& rQuad : m_ToiletQuads)
 	{
 		rRenderDevice.RenderQuad(rQuad, true);
 	}

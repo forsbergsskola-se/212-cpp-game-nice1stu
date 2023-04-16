@@ -25,7 +25,7 @@ public:
 public:
 
 	const QuadVector&	GetCollisionQuads	(void) const {return m_CollisionQuads;}
-	const QuadVector&	GetToiletteQuads	(void) const {return m_ToiletteQuads;}
+	const QuadVector&	GetToiletQuads	(void) const {return m_ToiletQuads;}
 	const QuadVector&	GetTriggerQuads		(void) const {return m_TriggerQuads;}
 
 private:
@@ -33,7 +33,7 @@ private:
 	CTexture*	m_pTexture;
 
 	QuadVector	m_CollisionQuads;
-	QuadVector	m_ToiletteQuads;
+	QuadVector	m_ToiletQuads;
 	QuadVector	m_TriggerQuads;
 
 };
