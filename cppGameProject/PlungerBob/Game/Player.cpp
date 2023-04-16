@@ -1,8 +1,8 @@
 #include "Player.h"
 
-#include "Framework/RenderDevice.h"
-#include "Framework/TextureFactory.h"
 #include "Framework/InputHandler.h"
+#include "Framework/RenderDevice.h"
+#include "Framework/TextureHandler.h"
 
 static bool QuadVsQuad(const SDL_FRect& rQuad1, const SDL_FRect& rQuad2, SDL_FRect* pIntersection = nullptr)
 {
@@ -31,7 +31,7 @@ CPlayer::CPlayer()
 , m_Speed(CVector2D::Zero)
 , m_CollisionQuadOffset(CVector2D::Zero)
 , m_LookDirection(1)
-, m_CurrentTriggerID(0)
+, m_CurrentTriggerID(-1)
 , m_HorizontalDirection(EState::IDLE)
 , m_VerticalDirection(EState::IDLE)
 , m_Plumbing(false)
@@ -49,9 +49,13 @@ bool CPlayer::Create()
 	const CVector2D FrameSize = CVector2D(128.0f, 128.0f);
 	const CVector2D PlayerSize = CVector2D(64.0f, 105.0f);
 
-	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Plumber.png");
+	m_pTexture = CTextureHandler::GetInstance().CreateTexture("Plumber.png");
 	m_pTexture->SetSize(FrameSize);
 	m_pTexture->SetTextureCoords(0, (uint32_t)FrameSize.x, 0, (uint32_t)FrameSize.y);
+
+	//////////////////////////////////////////////////////////////////////////
+
+	// Create animators that will be used more the player idle- and player running animation
 
 	m_pAnimatorIdle		= new CAnimator;
 	m_pAnimatorRunning	= new CAnimator;
@@ -60,13 +64,15 @@ bool CPlayer::Create()
 
 	m_pAnimatorCurrent = m_pAnimatorIdle;
 
+	//////////////////////////////////////////////////////////////////////////
+
 	m_Position = CRenderDevice::GetInstance().GetWindow()->GetCenter() - (FrameSize * 0.5f);
 	m_Velocity = CVector2D(300.0f, 300.0f);
 
 	// An offset from each animation frame's upper left corner to where the player graphics starts, which is used for collision detection, together with the m_CollisionQuad below
 	m_CollisionQuadOffset = CVector2D(35.0f, 10.0f);
 
-	// Player collider
+	// Define the player collision quad that will be used to detect collision between the player and the walls, toilettes and toilette triggers
 	m_CollisionQuad = {m_Position.x + m_CollisionQuadOffset.x, m_Position.y + m_CollisionQuadOffset.y, PlayerSize.x, PlayerSize.y};
 
 	return true;
@@ -80,7 +86,7 @@ void CPlayer::Destroy()
 	m_pAnimatorIdle		= nullptr;
 	m_pAnimatorRunning	= nullptr;
 
-	CTextureFactory::GetInstance().DestroyTexture(m_pTexture->GetName());
+	CTextureHandler::GetInstance().DestroyTexture(m_pTexture->GetName());
 }
 
 void CPlayer::HandleInput()
@@ -104,6 +110,8 @@ void CPlayer::HandleInput()
 
 	if(m_Plumbing)
 		return;
+
+	//////////////////////////////////////////////////////////////////////////
 
 	//Held Keys
 
@@ -140,6 +148,8 @@ void CPlayer::HandleInput()
 
 		ActivateAnimation(m_pAnimatorRunning);
 	}
+
+	/////////////////////////////////////////////////////
 
 	// Released Keys
 
@@ -247,6 +257,21 @@ void CPlayer::PlumbingFinished()
 {
 	m_pAnimatorCurrent = m_pAnimatorIdle;
 	m_pAnimatorCurrent->Reset();
+
+	m_Plumbing = false;
+}
+
+void CPlayer::Reset()
+{
+	m_pAnimatorCurrent = m_pAnimatorIdle;
+	m_pAnimatorCurrent->Reset();
+
+	m_Speed = CVector2D::Zero;
+
+	m_CurrentTriggerID = -1;
+
+	m_HorizontalDirection	= EState::IDLE;
+	m_VerticalDirection		= EState::IDLE;
 
 	m_Plumbing = false;
 }

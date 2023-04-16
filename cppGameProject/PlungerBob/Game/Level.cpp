@@ -1,7 +1,7 @@
 #include "Level.h"
 
 #include "Framework/RenderDevice.h"
-#include "Framework/TextureFactory.h"
+#include "Framework/TextureHandler.h"
 
 CLevel::CLevel(void)
 : m_pTexture(nullptr)
@@ -17,7 +17,9 @@ CLevel::~CLevel(void)
 
 bool CLevel::Create(void)
 {
-	m_pTexture = CTextureFactory::GetInstance().CreateTexture("Room.png");
+	m_pTexture = CTextureHandler::GetInstance().CreateTexture("Room.png");
+
+	//////////////////////////////////////////////////////////////////////////
 
 	const CVector2D WindowSize = CRenderDevice::GetInstance().GetWindow()->GetSize();
 
@@ -39,17 +41,21 @@ bool CLevel::Create(void)
 	m_CollisionQuads.push_back({720.0f,					430.0f,					120.0f,			192.0f});
 	m_CollisionQuads.push_back({955.0f,					430.0f,					120.0f,			192.0f});
 
-	// Top toilets
+	//////////////////////////////////////////////////////////////////////////
+
+	// Top toilettes
 	m_ToiletteQuads.push_back({142.0f,					100.0f,					60.0f,			105.0f});
 	m_ToiletteQuads.push_back({375.0f,					100.0f,					60.0f,			105.0f});
 	m_ToiletteQuads.push_back({843.0f,					100.0f,					60.0f,			105.0f});
 	m_ToiletteQuads.push_back({1076.0f,					100.0f,					60.0f,			105.0f});
 
-	// Bottom toilets
+	// Bottom toilettes
 	m_ToiletteQuads.push_back({142.0f,					515.0f,					60.0f,			105.0f});
 	m_ToiletteQuads.push_back({375.0f,					515.0f,					60.0f,			105.0f});
 	m_ToiletteQuads.push_back({843.0f,					515.0f,					60.0f,			105.0f});
 	m_ToiletteQuads.push_back({1076.0f,					515.0f,					60.0f,			105.0f});
+
+	//////////////////////////////////////////////////////////////////////////
 
 	// Top toilettes triggers
 	m_TriggerQuads.push_back({142.0f,					205.0f,					60.0f,			10.0f});
@@ -72,7 +78,7 @@ void CLevel::Destroy(void)
 	m_ToiletteQuads.clear();
 	m_TriggerQuads.clear();
 
-	CTextureFactory::GetInstance().DestroyTexture(m_pTexture->GetName());
+	CTextureHandler::GetInstance().DestroyTexture(m_pTexture->GetName());
 }
 
 void CLevel::Render(void)

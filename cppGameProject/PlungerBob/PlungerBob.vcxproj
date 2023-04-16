@@ -155,14 +155,14 @@
     <ClCompile Include="Framework\Random.cpp" />
     <ClCompile Include="Framework\RenderDevice.cpp" />
     <ClCompile Include="Framework\Texture.cpp" />
-    <ClCompile Include="Framework\TextureFactory.cpp" />
+    <ClCompile Include="Framework\TextureHandler.cpp" />
     <ClCompile Include="Framework\Timer.cpp" />
     <ClCompile Include="Framework\Vector2D.cpp" />
     <ClCompile Include="Framework\Window.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Level.cpp" />
     <ClCompile Include="Game\Player.cpp" />
-    <ClCompile Include="Game\Toilet.cpp" />
+    <ClCompile Include="Game\Toilette.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,14 +174,14 @@
     <ClInclude Include="Framework\Singleton.h" />
     <ClInclude Include="Framework\StringUtilities.h" />
     <ClInclude Include="Framework\Texture.h" />
-    <ClInclude Include="Framework\TextureFactory.h" />
+    <ClInclude Include="Framework\TextureHandler.h" />
     <ClInclude Include="Framework\Timer.h" />
     <ClInclude Include="Framework\Vector2D.h" />
     <ClInclude Include="Framework\Window.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\Level.h" />
     <ClInclude Include="Game\Player.h" />
-    <ClInclude Include="Game\Toilet.h" />
+    <ClInclude Include="Game\Toilette.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

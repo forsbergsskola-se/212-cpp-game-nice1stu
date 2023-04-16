@@ -7,7 +7,7 @@
 
 class CTexture
 {
-	friend class CTextureFactory;
+	friend class CTextureHandler;
 
 public:
 

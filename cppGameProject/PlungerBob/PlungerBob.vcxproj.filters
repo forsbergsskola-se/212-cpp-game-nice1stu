@@ -47,9 +47,6 @@
     <ClCompile Include="Framework\Texture.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\TextureFactory.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Timer.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
@@ -59,7 +56,10 @@
     <ClCompile Include="Framework\Window.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Toilet.cpp">
+    <ClCompile Include="Framework\TextureHandler.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Toilette.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,9 +97,6 @@
     <ClInclude Include="Framework\Texture.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\TextureFactory.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Timer.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -109,7 +106,10 @@
     <ClInclude Include="Framework\Window.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Toilet.h">
+    <ClInclude Include="Framework\TextureHandler.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Toilette.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

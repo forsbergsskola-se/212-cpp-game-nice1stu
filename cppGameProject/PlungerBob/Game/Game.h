@@ -2,7 +2,7 @@
 
 #include "Level.h"
 #include "Player.h"
-#include "Toilet.h"
+#include "Toilette.h"
 
 #include "Framework/Animator.h"
 #include "Framework/Random.h"
@@ -11,7 +11,7 @@ class CGame
 {
 public:
 
-	typedef std::vector<CToilet*> ToiletList;
+	typedef std::vector<CToilette*> ToiletteList;
 
 public:
 
@@ -28,8 +28,9 @@ public:
 
 private:
 
-	void ActivateRandomToilet();
-	void OnPlumbingStart(const uint32_t ToiletID);
+	void Reset();
+	void ActivateRandomToilette();
+	void OnPlumbingStart(const uint32_t ToiletteID);
 
 private:
 
@@ -71,12 +72,12 @@ private:
 	float m_EndScreenTimerDefault;
 	float m_EndScreenTimer;
 
-	uint32_t m_CurrentToilet;
-	uint32_t m_NumActivatedToilets;
+	uint32_t m_CurrentToilette;
+	uint32_t m_NumActivatedToilettes;
 
 	bool m_PlumbingStarted;
 
 	EState m_State;
 
-	ToiletList m_Toilets;
+	ToiletteList m_Toilettes;
 };

@@ -2,7 +2,7 @@
 
 #include "Framework/InputHandler.h"
 #include "Framework/RenderDevice.h"
-#include "Framework/TextureFactory.h"
+#include "Framework/TextureHandler.h"
 
 CApplication::CApplication()
 : m_pTimer(nullptr)
@@ -27,8 +27,8 @@ bool CApplication::Create(void)
 	if(!CRenderDevice::GetInstance().Create(CVector2D(1280.0f, 720.0f), "Plunger Bob"))
 		return false;
 
-	CTextureFactory::Initialize();
-	if(!CTextureFactory::GetInstance().Create("Data/Textures/"))
+	CTextureHandler::Initialize();
+	if(!CTextureHandler::GetInstance().Create("Data/Textures/"))
 		return false;
 
 	CInputHandler::Initialize();
@@ -62,8 +62,8 @@ void CApplication::Destroy(void)
 
 	CInputHandler::Deinitialize();
 
-	CTextureFactory::GetInstance().Destroy();
-	CTextureFactory::Deinitialize();
+	CTextureHandler::GetInstance().Destroy();
+	CTextureHandler::Deinitialize();
 
 	CRenderDevice::GetInstance().Destroy();
 	CRenderDevice::Deinitialize();

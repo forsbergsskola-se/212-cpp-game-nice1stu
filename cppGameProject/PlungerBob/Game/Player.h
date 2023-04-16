@@ -30,6 +30,8 @@ public:
 
 	void PlumbingFinished();
 
+	void Reset();
+
 public:
 
 	void SetPlumbingStartCallback(PlumbingStartCB pPlumbingStartCallback) {m_pPlumbingStartCallback = pPlumbingStartCallback;}
@@ -54,7 +56,7 @@ private:
 
 private:
 
-	// A function pointer that's pointing to a function that will be called whenever the player starts a toilet plumbing
+	// A function pointer that's pointing to a function that will be called whenever the player starts a toilette plumbing
 	PlumbingStartCB m_pPlumbingStartCallback;
 
 	CTexture* m_pTexture;

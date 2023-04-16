@@ -2,7 +2,7 @@
 
 #include "RenderDevice.h"
 #include "StringUtilities.h"
-#include "TextureFactory.h"
+#include "TextureHandler.h"
 
 #include <SDL_image.h>
 
@@ -32,7 +32,7 @@ bool CTexture::Create(const std::string& rFileName)
 	printf("Info: creating texture '%s'\n", Name.c_str());
 #endif
 
-	const std::string FileName = CTextureFactory::GetInstance().GetBasePath() + rFileName;
+	const std::string FileName = CTextureHandler::GetInstance().GetBasePath() + rFileName;
 
 	SDL_Surface* pSurface = IMG_Load(FileName.c_str());
 

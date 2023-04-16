@@ -2,6 +2,7 @@
 
 #include <random>
 
+// Random number generator
 class CRandom
 {
 public:
