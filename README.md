@@ -35,3 +35,23 @@ A look at the project folder structure
 
 Link to YouTube video  
 https://youtu.be/54h2x-Sj1m4  
+
+Technical Note:  
+Design Pattern
+This game implements a SINGLETON Design pattern over several classes to ensure no more then one instance of that class occurs while providing access to that instance. In this case the Singleton pattern is created as Template class which other classes inherit from, guaranteeing no more then 1 instance of that class occurs in the game:  
+InputHandler, RenderDevice, TextureHandler, Application are all Singletons inheriting from the Singleton Class.  
+
+Function Pointer  
+FUNCTION POINTER point to function rather then data.  
+m_pPlumbingStartCallback points to a function that and passes in "m_CurrentTriggerID" as an argument which will set determine if the player is already plumbing or not.  
+
+RunTime Polymorphism  
+This is used several times in the code to allow how a method is implemented to be determined during run time. In these cases I have allowed for OVERLOADING of several methods depending on the arguments passed in during run time.  
+void			RenderCopy					(CTexture* pTexture);  
+void			RenderCopy					(CTexture* pTexture, const CVector2D& rPosition);  
+
+static uint32_t	RandomUint	(void);  
+static uint32_t	RandomUint	(const uint32_t Min, const uint32_t Max);  
+
+CVector2D				(void);  
+CVector2D				(const float X, const float Y);  
