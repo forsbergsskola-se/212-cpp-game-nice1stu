@@ -1,5 +1,7 @@
 Bob the Intergalactic Bog Cleaner  
   
+Play WebGL version at https://developer0204.github.io/WebAssembly/  
+  
   Bob is a sanitation technician aboard a run down spaceship travelling the galaxy.  
   He has the inglorious job of having to maintain the cleanliness of the toilets onboard the ship.  
   It is challenging at the best of times, but when the ship loses artificial gravity, the sh#t really hits the fan. 
